@@ -1,15 +1,15 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>2026 | 我的星空博客</title><meta name="author" content="HimekoShini"><meta name="copyright" content="HimekoShini"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="这是使用 GitHub + Hexo + Butterfly 搭建的个人网站">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>2026 | 姬向审维 HimekoShini 的手记</title><meta name="author" content="HimekoShini"><meta name="copyright" content="HimekoShini"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="“样样通，样样松”">
 <meta property="og:type" content="website">
 <meta property="og:title" content="2026">
 <meta property="og:url" content="https://himekoshini.github.io/archives/2026/index.html">
-<meta property="og:site_name" content="我的星空博客">
-<meta property="og:description" content="这是使用 GitHub + Hexo + Butterfly 搭建的个人网站">
+<meta property="og:site_name" content="姬向审维 HimekoShini 的手记">
+<meta property="og:description" content="“样样通，样样松”">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://himekoshini.github.io/img/butterfly-icon.png">
+<meta property="og:image" content="https://himekoshini.github.io/img/avatar.png">
 <meta property="article:author" content="HimekoShini">
-<meta property="article:tag" content="博客, 前端, 个人网站">
+<meta property="article:tag" content="博客, 个人网站">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://himekoshini.github.io/img/butterfly-icon.png"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://himekoshini.github.io/archives/2026/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+<meta name="twitter:image" content="https://himekoshini.github.io/img/avatar.png"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/Star.png"><link rel="canonical" href="https://himekoshini.github.io/archives/2026/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
     (() => {
       
     const saveToLocal = {
@@ -67,13 +67,13 @@
       const activateDarkMode = () => {
         document.documentElement.setAttribute('data-theme', 'dark')
         if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'undefined')
         }
       }
       const activateLightMode = () => {
         document.documentElement.setAttribute('data-theme', 'light')
         if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'undefined')
         }
       }
 
@@ -82,7 +82,25 @@
 
       const theme = saveToLocal.get('theme')
     
-          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', () => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
         
       
       const asideStatus = saveToLocal.get('aside-status')
@@ -102,7 +120,7 @@
   </script><script>const GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
-  localSearch: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
   translate: undefined,
   highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
   copy: {
@@ -136,29 +154,482 @@
     toc: true,
     rightside: false,
   },
-  autoDarkmode: false
+  autoDarkmode: true
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
   title: '2026',
   isHighlightShrink: false,
   isToc: false,
   pageType: 'archive'
-}</script><meta name="generator" content="Hexo 8.1.2"></head><body><div class="page" id="body-wrap"><header class="not-home-page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">我的星空博客</span></a></span><div id="menus"></div></nav><div id="page-site-info"><h1 id="site-title">2026</h1></div></header><main class="layout" id="content-inner"><div id="archive"><div class="article-sort-title">全部文章 - 1</div><div class="article-sort"><div class="article-sort-item year">2026</div><div class="article-sort-item no-article-cover"><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2026-05-13T18:35:07.134Z" title="发表于 2026-05-14 02:35:07">2026-05-14</time></div><a class="article-sort-item-title" href="/2026/05/14/hello-world/" title="Hello World">Hello World</a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">HimekoShini</div><div class="author-info-description">这是使用 GitHub + Hexo + Butterfly 搭建的个人网站</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/14/hello-world/" title="Hello World">Hello World</a><time datetime="2026-05-13T18:35:07.134Z" title="发表于 2026-05-14 02:35:07">2026-05-14</time></div></div></div></div><div class="card-widget card-archives">
-    <div class="item-headline">
-      <i class="fas fa-archive"></i>
-      <span>归档</span>
+}</script><style>
+  @font-face {
+      font-family: 'Huawen'; /* 这是你自己给它起的代号 */
+      src: url('/fonts/huawen.woff2') format('truetype'); /* 引用的真实地址，记得加最前面的斜杠 / */
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap; /* 优化加载体验，加载前先显示默认字体 */
+  }
+  /* 🎨🎨🎨 👉 [可自定义]: 终极排字与全局色彩矩阵（白天模式） 🎨🎨🎨 */
+  :root {
+      /* 全局中文字体与西文字体序列 */
+      --hmk-font-family: "Huawen", "Microsoft Yahei", -apple-system, sans-serif;
+      /* 灵魂色彩：博客基础品牌色 (如按钮、高亮字、线条颜色等) */
+      --hmk-theme-color: #B4A6C9; 
+      /* 标题鼠标悬停时的变幻色 */
+      --hmk-hover-title-color: #8A68B0; 
+
+      /* --- 顶流大片区：首篇主推文章卡片参数 --- */
+      --hmk-hero-title-color: #ffffff;   /* 标题颜色 */
       
-    </div>
+      --hmk-hero-title-size: 3.5rem;       /* 👈 横幅标题【正常字】的字号 */
+      --hmk-hero-title-first-size: 2em;  /* 👈 横幅标题【开头首字】特大字号倍率 (1.6em代表是平常字的1.6倍大小) */
+      --hmk-hero-title-first-offset: -6px;  /* 👈 [终极修正] 像素级垂直平齐微调：若字体底部没和右侧字对齐，可以试着填 2px (往下偏移) 或 -2px (往上偏移)！默认0即可完美齐底。 */
+      
+      --hmk-hero-desc-color: #A6A095;    /* 摘要文字颜色 */
+      --hmk-hero-desc-size: 1.05rem;     /* 摘要文字字号 */
+      --hmk-hero-quote-color: #8A68B0;   /* 大横幅巨型双引号颜色 (日间特调紫) */
+
+      /* --- 中置分割线配置 --- */
+      --hmk-sep-title-color: var(--hmk-theme-color); 
+      --hmk-sep-title-size: 1.65rem;
+
+      /* --- 网格小片区：下方过往文章卡片参数 --- */
+      --hmk-grid-title-color: var(--hmk-theme-color); /* 小卡标题默认色 */
+      --hmk-grid-title-size: 1.15rem;                 /* 小卡标题字号 */
+      --hmk-grid-desc-color: #A6A095;                 /* 小卡内容简述颜色 */
+      --hmk-grid-desc-size: 0.9rem;                   /* 小卡内容简述字号 */
+      --hmk-grid-meta-color: #666666;                 /* 底部日期时间信息颜色 */
+      --hmk-grid-meta-size: 0.8rem;                   /* 底部时间字号 */
+
+      /* 📐📐 👉 [新增特性]: 你的文章正文排版中枢！字号、行距、首行缩进随意控制！ */
+      --hmk-article-text-size: 1.1rem;     /* 控制所有博文段落的文本大小（推荐范围 1.05rem 到 1.15rem 间游走体验） */
+      --hmk-article-line-height: 1.8;      /* 控制段落中文本行间的呼吸空间，默认 1.8 极具阅读感 */
+      --hmk-article-text-indent: 2em;      /* 控制段落首行缩进（2em 代表标准的两个中文字符宽度） */
+      --hmk-code-text-size: 0.95rem;       /* 专注锁定代码栏（包含黑框内的变量），稍小一些以防越界 */
+
+      /* 内部继承锁定，请勿动这两行 */
+      --theme-color: var(--hmk-theme-color) !important;
+      --text-bg-hover: var(--hmk-theme-color) !important;
+  }
+
+  /* 👑 字体夺权法阵：渗透至最深处文章与作者卡片 (绝不伤及代码高亮块) */
   
-    <ul class="card-archive-list">
-      
-        <li class="card-archive-list-item">
-          <a class="card-archive-list-link" href="/archives/2026/05/">
-            <span class="card-archive-list-date">
-              五月 2026
-            </span>
-            <span class="card-archive-list-count">1</span>
-          </a>
-        </li>
-      
-    </ul>
-  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">1</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-05-13T19:27:00.570Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By HimekoShini</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+  /* 1. 首先接管并改写 Butterfly 主题真正的原生底层字体核心变量 */
+  :root {
+      --global-font: var(--hmk-font-family) !important; 
+  }
+
+  /* 2. 直接点名狙杀原生最顽固的标题、段落、个人名片、标签文本！强行洗脑成你的专属字体 */
+  body, 
+  #aside-content .card-info, 
+  #aside-content .card-info .author-info__name, 
+  #aside-content .card-info .author-info__description, 
+  #article-container p, 
+  #article-container h1, 
+  #article-container h2, 
+  #article-container h3, 
+  #article-container h4, 
+  #article-container h5, 
+  #article-container h6,
+  #article-container li,
+  #article-container span:not([class]),
+  .post-title,
+  .flink-list .flink-item-name,
+  .flink-list .flink-item-desc {
+      font-family: var(--hmk-font-family) !important;
+  }
+
+  /* 📏 👉 精准注入字号控制法案（将段落和表格/列表切分，完美兼容中文首行缩进！） */
+  #article-container p {
+      font-size: var(--hmk-article-text-size) !important;
+      line-height: var(--hmk-article-line-height) !important;
+      text-indent: var(--hmk-article-text-indent) !important; /* 让文章纯文本段落自动空两格 */
+  }
+  
+  #article-container li,
+  #article-container table {
+      font-size: var(--hmk-article-text-size) !important;
+      line-height: var(--hmk-article-line-height) !important;
+      /* 绝对不给列表元素加缩进，否则版面会直接撕裂崩坏 */
+  }
+  
+  #article-container code, 
+  #article-container pre, 
+  figure.highlight pre, 
+  figure.highlight .line,
+  figure.highlight table * {
+      font-size: var(--hmk-code-text-size) !important;
+      text-indent: 0 !important; /* 代码框也绝对要封死缩进 */
+  }
+
+  /* 🌙🌙🌙 👉 [可自定义]: 暗面(夜间模式) 排字与色彩映射矩阵 🌙🌙🌙 */
+  [data-theme='dark'] {
+      /* 暗夜下的博客主色彩 (推荐偏亮以便在黑底凸显) */
+      --hmk-theme-color: #926CE6 !important; 
+      /* 暗夜下标题鼠标悬停的变换色 */
+      --hmk-hover-title-color: #D2B7FF !important; 
+
+      /* 暗面特供适配色 */
+      --hmk-hero-desc-color: #cccccc !important;   /* 暗夜大片区简述颜色 */
+      --hmk-hero-quote-color: #D2B7FF !important;  /* 大横幅巨型双引号颜色 (夜间特调明亮紫) */
+
+      --hmk-grid-title-color: #ffffff !important;  /* 暗夜网格卡标题颜色（为了看得清常设为白） */
+      --hmk-grid-desc-color: #bbbbbb !important;   /* 暗夜网格简述灰度 */
+      --hmk-grid-meta-color: #888888 !important;   /* 暗夜底部日期标签灰度 */
+
+      --theme-color: var(--hmk-theme-color) !important;
+      --text-bg-hover: var(--hmk-theme-color) !important;
+  }
+
+  /* 👉 以下为结构锁定代码：控制布局、防拷贝护盾、背景极光和透明玻璃，如无特殊需求无需改动。 */
+  body { caret-color: transparent !important; }
+  * { outline: none !important; }
+  input, textarea { caret-color: var(--hmk-theme-color) !important; user-select: text !important; pointer-events: auto !important; }
+  #article-container { user-select: text !important; caret-color: auto !important; }
+  #article-container a { color: var(--hmk-theme-color) !important; transition: opacity 0.3s !important; }
+  #article-container a:hover { opacity: 0.7 !important; text-decoration: underline !important; }
+
+  /* 🗡️ 精确命中！锁定归档页独有的容器名叫 #page-site-info，彻底把它抹杀干净！ */
+  #page-header #page-site-info { display: none !important; opacity: 0; pointer-events: none; }
+
+  #search-button, #search-mask, .search-dialog { display: none !important; pointer-events: none !important; width: 0 !important; height: 0 !important; }
+  #hmk-search-core-wrapper { position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; z-index: 1000 !important; width: 170px; transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
+  #hmk-search-core-wrapper:focus-within { width: 320px; }
+  #hmk-search-core-wrapper:focus-within #hmk-true-input-bar { background: rgba(255, 255, 255, 0.55) !important; border-color: rgba(255,255,255,0.7) !important;}
+  #hmk-true-input-bar { width: 100%; height: 35px; border-radius: 8px !important; background: rgba(255, 255, 255, 0.25) !important; backdrop-filter: blur(10px) !important; -webkit-backdrop-filter: blur(10px) !important; border: 1px solid rgba(255, 255, 255, 0.4) !important; display: flex !important; align-items: center !important; padding: 0 15px !important; transition: background 0.3s ease; box-sizing: border-box; cursor: text; }
+  #hmk-true-input-bar i { color: var(--hmk-theme-color) !important; font-size: 0.95rem; }
+  #hmk-true-input { width: 100%; background: transparent !important; border: none !important; box-shadow: none !important; color: #444 !important; margin-left: 10px; font-size: 0.9rem; font-family: var(--hmk-font-family); font-weight: bold; padding: 0 !important; outline: none !important; }
+  #hmk-true-input::placeholder { color: #666; font-weight: normal; opacity: 0.7; }
+  [data-theme='dark'] #hmk-true-input-bar { background: rgba(30, 32, 38, 0.4) !important; border: 1px solid rgba(255, 255, 255, 0.15) !important;}
+  [data-theme='dark'] #hmk-search-core-wrapper:focus-within #hmk-true-input-bar { background: rgba(50, 52, 60, 0.8) !important; border-color: rgba(255,255,255,0.3) !important;}
+  [data-theme='dark'] #hmk-true-input { color: #fff !important; }
+  [data-theme='dark'] #hmk-true-input::placeholder { color: #aaa; }
+  #hmk-stealer-dropdown { position: absolute; top: calc(100% + 15px); left: 0; width: 100%; max-height: 50vh; overflow-y: auto; overflow-x: hidden; background: rgba(255, 255, 255, 0.8) !important; backdrop-filter: blur(25px) saturate(1.2) !important; -webkit-backdrop-filter: blur(25px) saturate(1.2) !important; border-radius: 12px !important; border: 1px solid rgba(255, 255, 255, 0.6) !important; box-shadow: 0 10px 40px rgba(0,0,0,0.1), inset 1px 1px 3px rgba(255,255,255,0.8) !important; padding: 10px 8px; z-index: 1001; opacity: 0; pointer-events: none; transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1); transform: translateY(-15px); }
+  #hmk-stealer-dropdown.show-magic { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  #hmk-stealer-dropdown ul { list-style: none !important; margin: 0 !important; padding: 0 !important; }
+  #hmk-stealer-dropdown li { padding: 8px 12px !important; border-radius: 4px !important; cursor: pointer !important; transition: background 0.2s !important; border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important; }
+  #hmk-stealer-dropdown li:last-child { border-bottom: none !important; }
+  #hmk-stealer-dropdown li:hover { background: rgba(180, 166, 201, 0.15) !important; }
+  #hmk-stealer-dropdown a.search-result-title { display: block !important; color: #444 !important; font-size: 1.05rem !important; font-weight: bold !important; margin-bottom: 2px !important; text-decoration: none !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #hmk-stealer-dropdown p.search-result { font-size: 0.82rem !important; color: #777 !important; margin: 0 !important; line-height: 1.3 !important; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  #hmk-stealer-dropdown em.search-keyword { font-weight: bold !important; color: #ffffff !important; background: var(--hmk-theme-color) !important; font-style: normal !important; padding: 0 3px; border-radius: 4px;} 
+  .hmk-search-empty { text-align: center; color: #999; font-size: 0.9rem; padding: 20px 0; }
+  #hmk-stealer-dropdown::-webkit-scrollbar { width: 5px; } #hmk-stealer-dropdown::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 5px; }
+  [data-theme='dark'] #hmk-stealer-dropdown { background: rgba(30, 32, 38, 0.85) !important; border: 1px solid rgba(255, 255, 255, 0.1) !important; box-shadow: 0 15px 35px rgba(0,0,0,0.4), inset 1px 1px 3px rgba(255,255,255,0.05) !important; }
+  [data-theme='dark'] #hmk-stealer-dropdown li { border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important; }
+  [data-theme='dark'] #hmk-stealer-dropdown li:hover { background: rgba(255, 255, 255, 0.08) !important; }
+  [data-theme='dark'] #hmk-stealer-dropdown a.search-result-title { color: var(--hmk-hero-title-color) !important; }
+  [data-theme='dark'] #hmk-stealer-dropdown p.search-result { color: #aaa !important; }
+  [data-theme='dark'] .hmk-search-empty { color: #666; }
+  @media screen and (max-width: 768px) { #hmk-search-core-wrapper { display: none !important; } }
+  #article-container hr { position: relative !important; margin: 3.5rem auto !important; border: none !important; height: 20px !important; background: transparent !important; display: block !important; overflow: visible !important; }
+  #article-container hr::before { content: "✦" !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; color: var(--hmk-theme-color) !important; font-size: 1.5rem !important; opacity: 0.8 !important; z-index: 2 !important; }
+  #article-container hr::after { content: '' !important; position: absolute !important; width: 100% !important; height: 1px !important; top: 50% !important; left: 0 !important; background: linear-gradient( to right, transparent 0%, var(--hmk-theme-color) 25%, var(--hmk-theme-color) calc(50% - 15px), transparent calc(50% - 15px), transparent calc(50% + 15px), var(--hmk-theme-color) calc(50% + 15px), var(--hmk-theme-color) 75%, transparent 100% ) !important; opacity: 0.4 !important; z-index: 1 !important; }
+  [data-theme='dark'] #article-container hr::before { text-shadow: 0 0 10px rgba(146, 108, 230, 0.7) !important; opacity: 1 !important; }
+  #article-container blockquote { position: relative !important; width: fit-content !important; max-width: 90% !important; margin: 1rem auto 1.5rem auto !important; padding: 1rem 1.5rem 1rem 2.8rem !important; background: rgba(255, 255, 255, 0.4) !important; border-radius: 12px !important; box-shadow: 0 4px 15px rgba(0,0,0,0.04), inset 1px 1px 3px rgba(255,255,255,0.8) !important; border: none !important; color: var(--hmk-hero-desc-color) !important; }
+  #article-container blockquote::before { content: '' !important; position: absolute !important; left: 16px !important; top: 20% !important; height: 60% !important; width: 5px !important; background-color: var(--hmk-theme-color) !important; border-radius: 4px !important; }
+  #article-container blockquote > p { margin: 0 !important; }
+  [data-theme='dark'] #article-container blockquote { background: rgba(30, 32, 38, 0.3) !important; box-shadow: 0 4px 15px rgba(0,0,0,0.2), inset 1px 1px 2px rgba(255,255,255,0.1) !important; }
+  #post > .post-title.hmk-relocated { text-align: center !important; font-size: 2.3rem !important; font-weight: 800 !important; margin: 0.5rem 0 2rem 0 !important; color: #333333 !important; text-shadow: 0px 2px 4px rgba(0,0,0,0.08) !important; display: block !important; }
+  #post > #post-meta.hmk-relocated { margin-top: 3.5rem !important; padding-top: 2rem !important; border-top: 1px dashed rgba(128, 128, 128, 0.3) !important; text-align: center !important; display: flex !important; flex-direction: column !important; gap: 0.5rem !important; color: var(--hmk-grid-meta-color) !important; font-size: 0.85rem !important; }
+  #post > #post-meta.hmk-relocated a { color: var(--hmk-theme-color) !important; }
+  [data-theme='dark'] #post > .post-title.hmk-relocated { color: var(--hmk-hero-title-color) !important; text-shadow: 0px 4px 15px rgba(0,0,0,0.5) !important; }
+  [data-theme='dark'] #post > #post-meta.hmk-relocated { border-top: 1px dashed rgba(255, 255, 255, 0.1) !important; }
+  #page-header.post-bg #post-info { display: none !important; opacity: 0 !important; pointer-events: none !important;}
+  .flink-list > .flink-list-item { background: rgba(255, 255, 255, 0.55) !important;  backdrop-filter: blur(25px) saturate(1.2) !important; -webkit-backdrop-filter: blur(25px) saturate(1.2) !important; border-top: 1px solid rgba(255, 255, 255, 0.6) !important; border-left: 1px solid rgba(255, 255, 255, 0.6) !important; border-right: 1px solid rgba(0, 0, 0, 0.04) !important; border-bottom: 1px solid rgba(0, 0, 0, 0.04) !important; box-shadow: 4px 8px 20px rgba(0,0,0,0.05), inset 1px 1px 3px rgba(255,255,255,0.6), inset -2px -2px 8px rgba(0,0,0,0.03) !important; border-radius: 14px !important; text-decoration: none !important; transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease !important; }
+  .flink-list > .flink-list-item:before { display: none !important; }
+  .flink-list > .flink-list-item:hover { transform: translateY(-4px) !important; box-shadow: 6px 12px 25px rgba(0,0,0,0.08), inset 1px 1px 4px rgba(255,255,255,0.7), inset -3px -3px 10px rgba(0,0,0,0.04) !important; }
+  .flink-list > .flink-list-item img { transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55), box-shadow 0.3s ease !important; }
+  .flink-list > .flink-list-item:hover img { transform: scale(1.15) rotate(5deg) !important; box-shadow: 0 0 12px var(--hmk-theme-color) !important; }
+  .flink-list > .flink-list-item .flink-item-name { color: var(--hmk-grid-title-color) !important; transition: color 0.3s ease; }
+  .flink-list > .flink-list-item:hover .flink-item-name { color: var(--hmk-hover-title-color) !important; }
+  .flink-list > .flink-list-item .flink-item-desc { color: var(--hmk-grid-desc-color) !important; }
+  [data-theme='dark'] .flink-list > .flink-list-item { background: rgba(30, 32, 38, 0.4) !important; border-top: 1px solid rgba(255, 255, 255, 0.15) !important; border-left: 1px solid rgba(255, 255, 255, 0.15) !important; border-right: 1px solid rgba(0, 0, 0, 0.3) !important; border-bottom: 1px solid rgba(0, 0, 0, 0.3) !important; box-shadow: 5px 10px 20px rgba(0,0,0,0.25), inset 1px 1px 3px rgba(255,255,255,0.1), inset -2px -2px 8px rgba(0,0,0,0.2) !important; }
+  [data-theme='dark'] .flink-list > .flink-list-item:hover { box-shadow: 8px 15px 28px rgba(0,0,0,0.35), inset 1px 1px 4px rgba(255,255,255,0.15), inset -3px -3px 10px rgba(0,0,0,0.3) !important; }
+  .hmk-card, #aside-content .card-info, #post, #page, #archive, #tag, #category { background: rgba(255, 255, 255, 0.55) !important;  backdrop-filter: blur(25px) saturate(1.2) !important; -webkit-backdrop-filter: blur(25px) saturate(1.2) !important; border-top: 1px solid rgba(255, 255, 255, 0.6) !important; border-left: 1px solid rgba(255, 255, 255, 0.6) !important; border-right: 1px solid rgba(0, 0, 0, 0.04) !important; border-bottom: 1px solid rgba(0, 0, 0, 0.04) !important; box-shadow: 4px 8px 20px rgba(0,0,0,0.05), inset 1px 1px 3px rgba(255,255,255,0.6), inset -2px -2px 8px rgba(0,0,0,0.03) !important; border-radius: 14px !important; text-decoration: none !important; margin: 0; }
+  #aside-content .card-widget:not(.card-info) { display: none !important; }
+  html, body, #web_bg, #body-wrap, .layout, .page { background: transparent !important; }
+  
+  /* ✨ 无论日月流转，世界背壳固定在 F0FFF0！夜间仅仅将明亮和彩度削减护眼 */
+  #hmk-glass-stage { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; overflow: hidden; background: #F0FFF0 !important; z-index: -9999; pointer-events: none; }
+  [data-theme='dark'] #hmk-glass-stage { background: #F0FFF0 !important; filter: brightness(0.4) saturate(0.8) !important; }
+  
+  #hmk-glass-stage::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; backdrop-filter: blur(120px); -webkit-backdrop-filter: blur(120px); z-index: 10; }
+  
+  /* ✨ 光球色彩库（极光）*/
+  .hmk-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.85; animation: hmkRoam infinite alternate ease-in-out; }
+  .hmk-orb1 { width: 85vw; height: 85vh; background: #CCCCFF; top: -15vh; left: -15vw; animation-duration: 24s; } 
+  .hmk-orb2 { width: 75vw; height: 75vh; background: #FFFDD0; bottom: -15vh; right: -10vw; animation-duration: 28s; animation-direction: reverse; } 
+  .hmk-orb3 { width: 95vw; height: 95vh; background: #FFE4E1; bottom: -20vh; left: 15vw; animation-duration: 32s; } 
+  @keyframes hmkRoam { 0% { transform: translate(0, 0) scale(1) rotate(0deg); } 50% { transform: translate(15vw, 15vh) scale(1.2) rotate(90deg); } 100% { transform: translate(-10vw, -15vh) scale(0.9) rotate(180deg); } }
+  
+  #page-header { background: transparent !important; overflow: hidden; position: relative; font-family: var(--hmk-font-family); }
+  #bg-slider-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; z-index: -2; }
+  .bg-slide-item { flex-shrink: 0; width: 100%; height: 100%; background-size: cover; background-position: center; }
+  #page-header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; backdrop-filter: blur(8px) !important; -webkit-backdrop-filter: blur(8px) !important; background-color: rgba(0, 0, 0, 0.4) !important; z-index: -1; }
+  #site-subtitle { transition: opacity 0.5s ease-in-out; } 
+  #page-header #site-info { position: absolute !important; top: auto !important; bottom: 80px !important;  left: 5% !important; transform: none !important; text-align: left !important; width: auto !important; padding: 0 !important; z-index: 10 !important; }
+  #page-header #site-title, #page-header #site-subtitle { text-align: left !important; margin: 0 !important; }
+  #page-header #site-subtitle { margin-top: 15px !important; }
+  @media screen and (max-width: 768px) { #page-header #site-info { bottom: 50px !important; left: 20px !important; } }
+  #recent-posts { display: flex !important; flex-wrap: wrap !important; gap: 20px !important; font-family: var(--hmk-font-family); align-content: flex-start !important; align-items: flex-start !important; }
+  .hmk-card { display: flex !important; overflow: hidden !important; transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease !important; cursor: pointer; }
+  #aside-content .card-info { transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease !important; display: block !important; padding: 1.5rem !important;}
+  .hmk-card:hover, #aside-content .card-info:hover { transform: translateY(-4px) !important; box-shadow: 6px 12px 25px rgba(0,0,0,0.08), inset 1px 1px 4px rgba(255,255,255,0.7), inset -3px -3px 10px rgba(0,0,0,0.04) !important; }
+  [data-theme='dark'] .hmk-card, [data-theme='dark'] #aside-content .card-info, [data-theme='dark'] #post, [data-theme='dark'] #page, [data-theme='dark'] #archive, [data-theme='dark'] #tag, [data-theme='dark'] #category { background: rgba(30, 32, 38, 0.4) !important; border-top: 1px solid rgba(255, 255, 255, 0.15) !important; border-left: 1px solid rgba(255, 255, 255, 0.15) !important; border-right: 1px solid rgba(0, 0, 0, 0.3) !important; border-bottom: 1px solid rgba(0, 0, 0, 0.3) !important; box-shadow: 5px 10px 20px rgba(0,0,0,0.25), inset 1px 1px 3px rgba(255,255,255,0.1), inset -2px -2px 8px rgba(0,0,0,0.2) !important; }
+  [data-theme='dark'] .hmk-card:hover, [data-theme='dark'] #aside-content .card-info:hover { box-shadow: 8px 15px 28px rgba(0,0,0,0.35), inset 1px 1px 4px rgba(255,255,255,0.15), inset -3px -3px 10px rgba(0,0,0,0.3) !important; }
+  
+  .hmk-hero { width: 100% !important; aspect-ratio: 2.6 / 1 !important; height: auto !important; flex-direction: row !important; }
+  .hmk-hero-left { width: 65% !important; flex: 0 0 65% !important; height: 100% !important; position: relative; background-size: cover; background-position: center; display: block; border-right: 1px solid rgba(255,255,255,0.3); }
+  .hmk-hero-mask { position: absolute; left: 0; bottom: 0; width: 100%; height: 60%; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); pointer-events: none; z-index: 2; }
+  .hmk-hero-title { position: absolute; bottom: 25px; left: 30px; width: calc(100% - 60px); color: var(--hmk-hero-title-color) !important; font-size: var(--hmk-hero-title-size); font-weight: bold; z-index: 10; margin: 0; text-shadow: 0 3px 10px rgba(0,0,0,0.8); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; white-space: normal; line-height: 1.25; letter-spacing: 1px; transition: color 0.3s ease !important; }
+  .hmk-hero:hover .hmk-hero-title { color: var(--hmk-hover-title-color) !important; }
+  
+  /* 🗡️ 完美纠偏！文字真正的底部基线对齐！外加极客级别的纵向推拉遥控器，无视由于特殊字体产生的留白鸿沟。 */
+  .hmk-dropcap { position: relative; top: var(--hmk-hero-title-first-offset); font-size: var(--hmk-hero-title-first-size) !important; font-family: inherit !important; line-height: 1; margin-right: 4px; display: inline-block; vertical-align: baseline !important; }
+  
+  .hmk-hero-right { width: 35% !important; flex: 0 0 35% !important; padding: 40px 30px !important; position: relative; display: flex; flex-direction: column; justify-content: center; background: transparent !important; overflow: hidden;}
+  
+  .hmk-hero-quote { position: absolute; top: 10px; left: 20px; font-size: 6rem; font-family: Georgia, serif; color: var(--hmk-hero-quote-color) !important; opacity: 0.18 !important; line-height: 1; pointer-events: none; transition: color 0.3s ease !important; }
+  
+  .hmk-hero-excerpt { color: var(--hmk-hero-desc-color); font-size: var(--hmk-hero-desc-size); line-height: 1.8; position: relative; z-index: 5; display: -webkit-box; -webkit-line-clamp: 7; -webkit-box-orient: vertical; overflow: hidden; }
+  .hmk-sep { width: 100% !important; font-size: var(--hmk-sep-title-size) !important; font-weight: 900 !important; color: var(--hmk-sep-title-color) !important; margin: 25px 0 10px 0 !important; padding: 0 !important; line-height: 1 !important; display: block !important; text-shadow: 0px 2px 5px rgba(0,0,0,0.15) !important;}
+  [data-theme='dark'] .hmk-sep { text-shadow: 0px 3px 8px rgba(0,0,0,0.5) !important; }
+  .hmk-grid-item { width: calc(33.333% - 13.33px) !important; aspect-ratio: 5 / 6 !important; height: auto !important; flex-direction: column !important; }
+  .hmk-grid-left { width: 100%; height: 50%; display: block; background-size: cover; background-position: center; border-bottom: 1px solid rgba(255,255,255,0.2);}
+  .hmk-grid-right { width: 100%; height: 50%; padding: 16px 20px; text-decoration: none; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; background: transparent !important; cursor: pointer !important; }
+  .hmk-grid-title { color: var(--hmk-grid-title-color) !important; font-size: var(--hmk-grid-title-size); font-weight: bold; margin: 0 0 8px 0; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; white-space: normal; line-height: 1.3; transition: color 0.3s ease !important; }
+  .hmk-grid-item:hover .hmk-grid-title { color: var(--hmk-hover-title-color) !important; }
+  .hmk-grid-desc { font-size: var(--hmk-grid-desc-size); color: var(--hmk-grid-desc-color); opacity: 0.9; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.5; width: 100%; margin: 0 0 auto 0;}
+  .hmk-grid-meta { margin-top: auto; display: flex; width: 100%; justify-content: flex-start; gap: 15px; font-size: var(--hmk-grid-meta-size); color: var(--hmk-grid-meta-color); }
+  .hmk-m-sub { display: flex; align-items: center; gap: 5px; }
+  #pagination { width: 100% !important; margin-top: 15px !important; }
+  @media screen and (min-width: 2200px) { .hmk-grid-item { width: calc(25% - 15px) !important; aspect-ratio: 5 / 6 !important;} }
+  @media screen and (max-width: 1200px) { .hmk-grid-item { width: calc(50% - 10px) !important; } }
+  @media screen and (max-width: 900px) { .hmk-hero { flex-direction: column !important; aspect-ratio: auto !important; height: auto !important; } .hmk-hero-left { width: 100% !important; flex: 0 0 auto !important; height: 260px !important; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08);} .hmk-hero-right { width: 100% !important; flex: 0 0 auto !important; padding: 30px !important; } .hmk-grid-item { width: 100% !important; aspect-ratio: auto !important; height: auto !important; } .hmk-grid-left { height: 180px !important; } }
+</style>
+<meta name="generator" content="Hexo 8.1.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-box-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">姬向审维 HimekoShini 的手记</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-box-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title">2026</h1></div></header><main class="layout" id="content-inner"><div id="archive"><div class="article-sort-title">全部文章 - 2</div><div class="article-sort"><div class="article-sort-item year">2026</div><div class="article-sort-item"><a class="article-sort-item-img" href="/2026/05/13/%E5%AE%87%E5%AE%99%E5%86%B7%E6%BC%A0/" title="宇宙冷漠"><img src="/img/Regent.png" alt="宇宙冷漠" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2026-05-12T16:00:00.000Z" title="发表于 2026-05-13 00:00:00">2026-05-13</time></div><a class="article-sort-item-title" href="/2026/05/13/%E5%AE%87%E5%AE%99%E5%86%B7%E6%BC%A0/" title="宇宙冷漠">宇宙冷漠</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/2026/01/01/%E5%8F%A6%E4%B8%80%E4%B8%AA%E6%88%91/" title="另一个我"><img src="/img/Another.png" alt="另一个我" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2025-12-31T16:00:00.000Z" title="发表于 2026-01-01 00:00:00">2026-01-01</time></div><a class="article-sort-item-title" href="/2026/01/01/%E5%8F%A6%E4%B8%80%E4%B8%AA%E6%88%91/" title="另一个我">另一个我</a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">HimekoShini</div><div class="author-info-description">“样样通，样样松”</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/HimekoShini" target="_blank" title="Github主页"><i class="fab fa-github"></i></a></div></div><div class="sticky_layout"></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2026 By HimekoShini</span></div><div class="footer_custom_text">基于 Hexo 与 Butterfly，由 Gemini 3.1 pro preview 协助开发</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"></div><script>
+  (function(){
+    if (!document.getElementById('hmk-glass-stage')) {
+        const bgStage = document.createElement('div');
+        bgStage.id = 'hmk-glass-stage';
+        bgStage.innerHTML = `<div class="hmk-orb hmk-orb1"></div><div class="hmk-orb hmk-orb2"></div><div class="hmk-orb hmk-orb3"></div>`;
+        document.body.prepend(bgStage);
+    }
+
+    function initCenterSearchBar() {
+        const nav = document.getElementById('nav');
+        if (nav && !document.getElementById('hmk-search-core-wrapper')) {
+            const wrapper = document.createElement('div'); wrapper.id = 'hmk-search-core-wrapper';
+            const bar = document.createElement('div'); bar.id = 'hmk-true-input-bar';
+            const icon = document.createElement('i'); icon.className = 'fas fa-search';
+            const topInput = document.createElement('input'); topInput.type = 'text'; topInput.placeholder = '搜索...'; topInput.id = 'hmk-true-input'; topInput.autocomplete = 'off';
+            bar.appendChild(icon); bar.appendChild(topInput);
+            const dropdown = document.createElement('div'); dropdown.id = 'hmk-stealer-dropdown';
+            wrapper.appendChild(bar); wrapper.appendChild(dropdown); nav.appendChild(wrapper);
+
+            let searchData = null;
+            const fetchSearchDB = () => {
+                if(searchData) return; 
+                fetch('/search.xml').then(res => res.text()).then(str => new window.DOMParser().parseFromString(str, "text/xml")).then(data => {
+                    const entries = data.querySelectorAll('entry');
+                    searchData = Array.from(entries).map(node => ({
+                       title: node.querySelector('title')?.textContent || '',
+                       content: node.querySelector('content')?.textContent || '',
+                       url: node.querySelector('url')?.textContent || ''
+                    }));
+                }).catch(e => { console.log('寻源失败...', e); });
+            };
+            topInput.addEventListener('focus', fetchSearchDB);
+
+            topInput.addEventListener('input', function() {
+                const kw = this.value.trim().toLowerCase();
+                if (!kw) { dropdown.classList.remove('show-magic'); dropdown.innerHTML = ''; return; }
+                if (!searchData) return;
+
+                let htmlStr = '';
+                searchData.forEach(item => {
+                    const tText = item.title.toLowerCase(); const cText = item.content.toLowerCase();
+                    const matchT = tText.includes(kw); const matchC = cText.includes(kw);
+                    if (matchT || matchC) {
+                        let titleRender = item.title;
+                        if(matchT) titleRender = item.title.replace(new RegExp(kw, 'gi'), '<em class="search-keyword">$&</em>');
+                        let contentSnippet = '';
+                        if (matchC) {
+                            let idx = cText.indexOf(kw);
+                            let start = Math.max(0, idx - 15); let end = Math.min(cText.length, idx + 60);
+                            contentSnippet = item.content.substring(start, end).replace(new RegExp(kw, 'gi'), '<em class="search-keyword">$&</em>');
+                            if (start > 0) contentSnippet = '...' + contentSnippet;
+                            if (end < cText.length) contentSnippet += '...';
+                        } else { contentSnippet = item.content.substring(0, 60) + '...'; }
+
+                        htmlStr += `<li><a href="${item.url}" class="search-result-title">${titleRender}</a><p class="search-result">${contentSnippet}</p></li>`;
+                    }
+                });
+
+                if(htmlStr === '') htmlStr = '<div class="hmk-search-empty">观测雷达返回了一片虚无的空域...</div>';
+                
+                dropdown.innerHTML = `<ul>${htmlStr}</ul>`;
+                dropdown.classList.add('show-magic');
+
+                dropdown.querySelectorAll('li').forEach(li => {
+                   li.addEventListener('click', function() { const anchor = this.querySelector('a'); if(anchor) window.location.href = anchor.href; });
+                });
+            });
+
+            document.addEventListener('click', function(e) { if (!wrapper.contains(e.target)) dropdown.classList.remove('show-magic'); });
+            bar.addEventListener('click', function() { topInput.focus(); if(topInput.value.trim() !== '' && dropdown.innerHTML.trim() !== '') dropdown.classList.add('show-magic'); });
+        }
+    }
+
+    /* 📚📚📚 👉 [可自定义]: 前端文字文案库与图片壁纸源矩阵 📚📚📚 */
+
+    // 👉 [自定义文案]: 网站标题下方的随机跳动文案，每次刷新和等待都会轮播这些极客语录，可以自行加减
+    const textPool = [
+        "「可是她们的话分不清真假」—— 赵雷《朵》",
+        "「只有那明月，知道过程壮烈」—— 许一鸣《一等情事》",
+        "「Perfume came naturally from Paris, naturally」—— Queen《Killer Queen》",
+        "「Bye bye baby blue」—— Glass Animal《The Other Side Of Paradise》",
+        "「この心がずっと自由なまま」—— eufonius《比翼の羽根》",
+        "「でもきっと君がいたら変わる？」—— 大槻ケンヂ《人として軸がぶれている》",
+        "「I feel numb, I feel burning with haste」—— Jack Stauber《Baby Hotline》",
+        "「この世界の哀しみを抱えたふりして、どこか寂しくて」—— Kyiku《かなしい、かなしい、てのひら。》",
+        "「雷鳴」—— r-906《まにまに》",
+        "「そのどれもが全部、同じ人」—— ピノキオピー《すろぉもぉしょん》",
+        "「そんなあなたを、春風が攫ってく」—— 倚水《春を待つ》",
+        "「感情を殺させないで」—— ヒバナ《フローリア》",
+        "「青春は、日々の中夢の中」—— なるみや《乙女的ストーキング》",
+        "「会えたらな、会いたいな」—— 澤田空海理《us》",
+        "「風の筆、射す、春日花抄」—— はな《櫻ノ詩》",
+        "「Though you have left」—— mili《world.execute (me) ;》"
+    ];
+    
+    // 👉 [自定义背景]: 首页头部大屏幕背后轮播的壁纸库。可替换为任何你心仪的图床链接 (逗号隔开)
+    const imgPool = [ 
+        "/img/Brimstone_Akari.png",
+        "/img/Alice.jpg", 
+        "/img/Another.png", 
+        "/img/Regent.png",
+        "/img/Santa_Otto.png" 
+    ];
+    
+    // 👉 [自定义缺省图]: 如果你发的一篇文章没有设置 cover (封面照)，卡片阵列将会从这数组里拿图补充！
+    const defaultImgs = [
+        "/img/Default_Cover.png"
+    ];
+
+    /* --- 底层核心执行法术 --- */
+    function initBannerAndText() {
+      const header = document.getElementById('page-header');
+      if (header && !document.getElementById('bg-slider-container')) {
+        const sliderBox = document.createElement('div');
+        sliderBox.id = 'bg-slider-container';
+        imgPool.forEach(src => { const s = document.createElement('div'); s.className = 'bg-slide-item'; s.style.backgroundImage = `url("${src}")`; sliderBox.appendChild(s); });
+        sliderBox.appendChild(sliderBox.children[0].cloneNode(true));
+        header.prepend(sliderBox); 
+        let cIdx = 0; const sEngine = 'transform 1s cubic-bezier(0.65, 0, 0.35, 1)'; sliderBox.style.transition = sEngine;
+        setInterval(() => {
+          cIdx++; sliderBox.style.transition = sEngine; sliderBox.style.transform = `translateX(-${cIdx * 100}%)`;
+          if (cIdx === imgPool.length) { setTimeout(() => { sliderBox.style.transition = 'none'; cIdx = 0; sliderBox.style.transform = `translateX(0)`; }, 1000); }
+        }, 6000);
+      }
+      const subText = document.getElementById('site-subtitle');
+      if (subText && !subText.hasAttribute('data-inited')) {
+        subText.setAttribute('data-inited', '1');
+        subText.style.transition = 'opacity 0.5s ease-in-out';
+        let lastIdx = Math.floor(Math.random() * textPool.length); subText.innerText = textPool[lastIdx];
+        setInterval(() => {
+          subText.style.opacity = 0; setTimeout(() => {
+            let nIdx; do { nIdx = Math.floor(Math.random()*textPool.length); } while(nIdx===lastIdx && textPool.length>1);
+            lastIdx = nIdx; subText.innerText = textPool[lastIdx]; subText.style.opacity = 1; 
+          }, 500); 
+        }, 4000);
+      }
+    }
+
+    function remodelPosts() {
+      const container = document.getElementById('recent-posts');
+      if(!container || container.querySelector('.hmk-hero')) return; 
+      const originalPosts = Array.from(container.querySelectorAll('.recent-post-item'));
+      if(originalPosts.length === 0) return;
+      let materials = [];
+      originalPosts.forEach((post) => {
+          let a = post.querySelector('.article-title'); let t = a ? a.textContent.trim() : "无标题"; let l = a ? a.href : "/";
+          let imgEl = post.querySelector('img'); let pic = imgEl ? imgEl.src : null;
+          let c = post.querySelector('.content'); let ext = c ? c.textContent.trim() : "";
+          let dateEl = post.querySelector('time'); let dateTxt = dateEl ? dateEl.textContent.trim() : "未标记";
+          materials.push({ title: t, link: l, picture: pic, excerpt: ext, metaDate: dateTxt });
+      });
+      let paginator = container.querySelector('#pagination');
+      container.innerHTML = "";
+      materials.forEach((m, i) => {
+          let card = document.createElement('div'); card.className = "hmk-card"; let activeImg = m.picture || defaultImgs[i % defaultImgs.length];
+          if(i === 0) {
+              card.classList.add("hmk-hero"); let fc = m.title.charAt(0); let rc = m.title.substring(1);
+              card.innerHTML = `<a href="${m.link}" class="hmk-hero-left" style="background-image:url('${activeImg}');"><div class="hmk-hero-mask"></div><h2 class="hmk-hero-title"><span class="hmk-dropcap">${fc}</span>${rc}</h2></a><a href="${m.link}" class="hmk-hero-right" style="text-decoration:none;"><div class="hmk-hero-quote">“</div><div class="hmk-hero-excerpt">${m.excerpt}</div></a>`;
+          } else {
+              if(i === 1) { let s = document.createElement("div"); s.className = "hmk-sep"; s.innerText = "往期内容"; container.appendChild(s); }
+              card.classList.add("hmk-grid-item");
+              card.innerHTML = `<a href="${m.link}" class="hmk-grid-left" style="background-image:url('${activeImg}');"></a><a href="${m.link}" class="hmk-grid-right"><div class="hmk-grid-title">${m.title}</div><div class="hmk-grid-desc">${m.excerpt}</div><div class="hmk-grid-meta"><span class="hmk-m-sub"><i class="fas fa-calendar-alt"></i>${m.metaDate}</span></div></a>`;
+          }
+          container.appendChild(card);
+      });
+      if(paginator) container.appendChild(paginator);
+    }
+
+    function relocatePostTitleMeta() {
+        const postCard = document.getElementById('post'); const postInfoBox = document.getElementById('post-info');
+        if (postCard && postInfoBox) {
+            const titleNode = postInfoBox.querySelector('.post-title'); const metaNode = postInfoBox.querySelector('#post-meta');
+            if (titleNode && !titleNode.classList.contains('hmk-relocated')) { titleNode.classList.add('hmk-relocated'); postCard.insertBefore(titleNode, postCard.firstChild); }
+            if (metaNode && !metaNode.classList.contains('hmk-relocated')) { metaNode.classList.add('hmk-relocated'); postCard.appendChild(metaNode); }
+        }
+    }
+
+    function initObsidianGraph() {
+        const cloudBox = document.querySelector('.layout > #page .tag-cloud-list, .layout > #page .tag-cloud-tags');
+        if (!cloudBox || cloudBox.hasAttribute('data-graph-inited')) return;
+        const tags = Array.from(cloudBox.querySelectorAll('a'));
+        if (tags.length === 0) return;
+        cloudBox.setAttribute('data-graph-inited', '1'); cloudBox.style.display = 'block';
+        const nodes = tags.map(tag => {
+            const fStr = tag.style.fontSize || ''; let fSize = 14; 
+            if(fStr.includes('px')) fSize = parseFloat(fStr); else if(fStr.includes('em')) fSize = parseFloat(fStr) * 16;
+            return { text: tag.textContent.trim(), href: tag.href, r: Math.max(5, Math.min(18, fSize / 2.5)), x: Math.random() * (cloudBox.clientWidth - 50) + 25, y: Math.random() * 450 + 25, vx: (Math.random() - 0.5) * 0.15, vy: (Math.random() - 0.5) * 0.15 };
+        });
+        cloudBox.innerHTML = '<canvas id="hmk-obsidian-canvas" style="width:100%; height: 500px; display:block;"></canvas>';
+        const cvs = document.getElementById('hmk-obsidian-canvas'); const ctx = cvs.getContext('2d');
+        let cw = cvs.width = cloudBox.clientWidth; let ch = cvs.height = 500; cloudBox.style.height = '500px';
+        let hoverNode = null;
+        cvs.addEventListener('mousemove', e => { const rect = cvs.getBoundingClientRect(); hoverNode = nodes.find(n => Math.hypot(n.x - (e.clientX - rect.left), n.y - (e.clientY - rect.top)) < n.r + 15); cvs.style.cursor = hoverNode ? 'pointer' : 'default'; });
+        cvs.addEventListener('click', () => { if (hoverNode) window.location.href = hoverNode.href; });
+        function draw() {
+            ctx.clearRect(0, 0, cw, ch); const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            const normalNodeColor = isDark ? '#4a4d5b' : '#cfc3dc'; const highlightTheme = isDark ? '#926CE6' : '#8A68B0'; const textColorNormal = isDark ? '#888888' : '#888888'; const textColorHighlight = isDark ? '#ffffff' : '#333333';
+            nodes.forEach(n => { n.x += n.vx; n.y += n.vy; if(n.x < n.r + 5 || n.x > cw - n.r - 5) n.vx *= -1; if(n.y < n.r + 5 || n.y > ch - n.r - 5) n.vy *= -1; });
+            ctx.lineWidth = 1;
+            for(let i = 0; i < nodes.length; i++){
+                for(let j = i + 1; j < nodes.length; j++){
+                    const d = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y);
+                    if(d < 160) {
+                        let isLinkActive = hoverNode ? (nodes[i] === hoverNode || nodes[j] === hoverNode) : true; if (hoverNode && !isLinkActive) continue; 
+                        const alpha = (1 - d/160) * (isLinkActive && hoverNode ? 0.9 : 0.4); ctx.beginPath(); ctx.moveTo(nodes[i].x, nodes[i].y); ctx.lineTo(nodes[j].x, nodes[j].y);
+                        ctx.strokeStyle = (isLinkActive && hoverNode) ? (isDark ? `rgba(146,108,230,${alpha})` : `rgba(138,104,176,${alpha})`) : (isDark ? `rgba(120,120,120,${alpha})` : `rgba(180,180,180,${alpha})`);
+                        ctx.stroke();
+                    }
+                }
+            }
+            nodes.forEach(n => {
+                const isLinked = hoverNode && Math.hypot(n.x - hoverNode.x, n.y - hoverNode.y) < 160; const isHovered = n === hoverNode; const shouldLightUp = isHovered || isLinked || (!hoverNode);
+                ctx.beginPath(); ctx.arc(n.x, n.y, isHovered ? n.r + 4 : n.r, 0, Math.PI * 2); ctx.fillStyle = hoverNode ? (isHovered ? highlightTheme : (isLinked ? normalNodeColor : (isDark ? '#2b2c35' : '#e7e3ea'))) : normalNodeColor; ctx.fill();
+                if (shouldLightUp || n.r > 8) { ctx.font = isHovered ? 'bold 15px "Microsoft Yahei", sans-serif' : '13px "Microsoft Yahei", sans-serif'; ctx.fillStyle = isHovered ? textColorHighlight : (isLinked ? highlightTheme : textColorNormal); if(hoverNode && !shouldLightUp) ctx.fillStyle = 'transparent'; ctx.fillText(n.text, n.x + n.r + 5, n.y + 4); }
+            }); requestAnimationFrame(draw);
+        }
+        draw(); window.addEventListener('resize', () => { if(cloudBox.clientWidth) cw = cvs.width = cloudBox.clientWidth; });
+    }
+
+    /* 装甲满级驱动：启动引擎所有阵法！ */
+    initBannerAndText(); initCenterSearchBar(); remodelPosts(); relocatePostTitleMeta(); initObsidianGraph(); 
+    document.addEventListener('pjax:complete', function() { initCenterSearchBar(); remodelPosts(); relocatePostTitleMeta(); initObsidianGraph(); });
+  })();
+</script>
+<script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.4"></script></div></div></body></html>
