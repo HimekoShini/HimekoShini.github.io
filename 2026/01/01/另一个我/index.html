@@ -226,6 +226,18 @@
       /* 内部继承锁定，请勿动 */
       --theme-color: var(--hmk-theme-color) !important;
       --text-bg-hover: var(--hmk-theme-color) !important;
+      
+      /* 👨‍💻👩‍💻 👉 [可自定义]: 代码高级语法着色器 (白底 Vscode 柔和方案) 👨‍💻👩‍💻 */
+      --hmk-code-text-base: #333333;       /* 常规未经标黄或标注的基础代码底色 */
+      --hmk-code-keyword: #af00db;         /* [紫色] 保留字与逻辑触发词：if, then, const, return... */
+      --hmk-code-function: #795e26;        /* [褐色] 方法与函数名字调用：myFunction() */
+      --hmk-code-string: #a31515;          /* [暗红] 文本或字符输出：'Hello World' */
+      --hmk-code-number: #098658;          /* [墨绿] 全局一切的数字数值：123, 0.5 */
+      --hmk-code-comment: #008000;         /* [草绿] 注释与备注文字 */
+      --hmk-code-builtin: #0000ff;         /* [深蓝] 原生内置的全局指令：window, Math... */
+      --hmk-code-tag: #800000;             /* [深红] 专门属于 HTML 等标记语言的方括号 */
+      --hmk-code-attr: #ff0000;            /* [正红] 给属性名赋予特定的警告跳跃颜色：src=, href=... */
+      --hmk-code-punctuation: #666666;     /* [淡灰] 句号括号大括号及运算符 */
   }
 
   /* 👑 字体夺权法阵：渗透至最深处 */
@@ -235,12 +247,11 @@
 
   /* 📏 👉 精准注入字号控制法案 */
   #article-container p { font-size: var(--hmk-article-text-size) !important; line-height: var(--hmk-article-line-height) !important; text-indent: var(--hmk-article-text-indent) !important; }
-  
+  #article-container p:empty { display: none !important; } /* 消灭所有魔法替换导致的空换行鬼影占位 */
   #article-container li, #article-container table { font-size: var(--hmk-article-text-size) !important; line-height: var(--hmk-article-line-height) !important; }
-  
   #article-container code, #article-container pre, figure.highlight pre, figure.highlight .line, figure.highlight table *, .math.display *, .math.inline * { font-size: var(--hmk-code-text-size) !important; text-indent: 0 !important; }
 
-  /* 🌙🌙🌙 👉 [可自定义]: 暗面排字矩阵 */
+  /* 🌙🌙🌙 👉 [可自定义]: 暗面排字矩阵 🌙🌙🌙 */
   [data-theme='dark'] {
       --hmk-theme-color: #926CE6 !important; 
       --hmk-hover-title-color: #D2B7FF !important; 
@@ -251,13 +262,83 @@
       --hmk-grid-meta-color: #888888 !important;   
       --theme-color: var(--hmk-theme-color) !important;
       --text-bg-hover: var(--hmk-theme-color) !important;
+      
+      /* 👨‍💻👩‍💻 👉 [可自定义]: 暗面下自动切换至最广受推崇的超绝唯美 One Dark Pro 黑夜方案 👨‍💻👩‍💻 */
+      --hmk-code-text-base: #abb2bf !important;
+      --hmk-code-keyword: #c678dd !important; 
+      --hmk-code-function: #61afef !important; 
+      --hmk-code-string: #98c379 !important; 
+      --hmk-code-number: #d19a66 !important; 
+      --hmk-code-comment: #5c6370 !important; 
+      --hmk-code-builtin: #e5c07b !important; 
+      --hmk-code-tag: #e06c75 !important; 
+      --hmk-code-attr: #d19a66 !important; 
+      --hmk-code-punctuation: #7F848E !important; 
   }
 
   /* ------------------------------------------------------------- */
-  /* ✨ 极致维保计划: WIKI魔法拓展区排印法阵 (表/脚注/挂件解析与UI重塑) ✨*/
+  /* ✨ 极致维保计划: WIKI魔法拓展区排印法阵 (表/脚注/折叠框与UI重塑) ✨*/
   /* ------------------------------------------------------------- */
+
+  /* 📚 奇观1号：悬浮毛玻璃双紫卡片阵列 - 极冰通透材质无阻隔降临！ */
+  #article-container figure.highlight { border-radius: 12px !important; background: rgba(255, 255, 255, 0.55) !important; backdrop-filter: blur(25px) saturate(1.2) !important; -webkit-backdrop-filter: blur(25px) saturate(1.2) !important; border: 1px solid rgba(255, 255, 255, 0.6) !important; box-shadow: 4px 8px 20px rgba(0,0,0,0.06), inset 1px 1px 3px rgba(255,255,255,0.6) !important; overflow: hidden !important; margin: 1.8rem 0 !important; color: var(--hmk-code-text-base) !important; text-align: left !important; }
+  #article-container figure.highlight .highlight-tools { background: linear-gradient(135deg, var(--hmk-theme-color) 0%, #8A68B0 100%) !important; color: #fff !important; opacity: 0.95 !important; border-bottom: none !important; font-family: var(--hmk-font-family) !important; font-weight: bold !important; text-shadow: 0 1px 3px rgba(0,0,0,0.2) !important;}
+  #article-container figure.highlight .highlight-tools .code-lang { font-family: monospace !important; font-weight: 900 !important; }
+  #article-container figure.highlight .highlight-tools i, #article-container figure.highlight .highlight-tools i.fas { color: #fff !important; }
   
-  /* 📋 表格水晶质感雕刻 */
+  /* 🗡️ 神级抹杀令加强版：重置表格细胞属性以绝对阻止“一缩一排”导致悬空！且防切分间距被过度拉扯！ */
+  #article-container figure.highlight table { display: block !important; overflow-x: auto !important; margin: 0 !important; width: 100% !important; border-collapse: collapse !important;}
+  #article-container figure.highlight .gutter, #article-container figure.highlight .code, #article-container figure.highlight td, #article-container figure.highlight tr { background: transparent !important; background-color: transparent !important; border: none !important; box-shadow: none !important; text-align: left !important; vertical-align: top !important; /* 关键改动：必须是Top绝对顶天花板起排对齐！不能为Middle！ */ }
+  #article-container figure.highlight .code *, #article-container figure.highlight .gutter * { background: transparent !important; background-color: transparent !important; }
+  
+  /* 🔥 平衡修正引擎：为代码和数字增加相互平行的垂直对等推力，避免重压和边缘溢出 */
+  #article-container figure.highlight pre { white-space: pre !important; word-wrap: normal !important; text-align: left !important; margin: 0 !important; overflow: visible !important;}
+  #article-container figure.highlight .gutter pre { color: rgba(100,100,100, 0.4) !important; text-align: right !important; padding: 15px 15px 15px 18px !important; }
+  #article-container figure.highlight .code pre { padding: 15px 18px 15px 5px !important; }
+  
+  /* 完全抹杀原生自带、或本皮肤旧逻辑的各类恶心 hover 断层高光！强行锁死全透明！ */
+  #article-container figure.highlight tbody tr:hover, #article-container figure.highlight .code:hover, #article-container figure.highlight .line:hover, #article-container figure.highlight pre:hover { background: transparent !important; background-color: transparent !important; }
+
+  [data-theme='dark'] #article-container figure.highlight { background: rgba(30, 32, 38, 0.4) !important; border-color: rgba(255,255,255,0.1) !important; box-shadow: 5px 10px 20px rgba(0,0,0,0.25), inset 1px 1px 3px rgba(255,255,255,0.05) !important; }
+  [data-theme='dark'] #article-container figure.highlight .highlight-tools { background: linear-gradient(135deg, #714EAC 0%, var(--hmk-theme-color) 100%) !important; }
+  [data-theme='dark'] #article-container figure.highlight .gutter pre { color: rgba(255,255,255, 0.2) !important; }
+  
+  /* == HMK 自制核心解析器接管渲染管线 (精准上色计划) == */
+  #article-container figure.highlight .code pre { font-weight: bold; color: inherit !important; line-height: 1.6 !important;}
+  #article-container figure.highlight .code pre span { color: inherit; } 
+  #article-container figure.highlight .code pre span.keyword, #article-container figure.highlight .code pre span.selector-tag { color: var(--hmk-code-keyword) !important; font-weight: bold;}
+  #article-container figure.highlight .code pre span.title, #article-container figure.highlight .code pre span.title.function_ { color: var(--hmk-code-function) !important; font-weight: bold; }
+  #article-container figure.highlight .code pre span.string, #article-container figure.highlight .code pre span.regexp, #article-container figure.highlight .code pre span.symbol { color: var(--hmk-code-string) !important; font-weight: normal !important;}
+  #article-container figure.highlight .code pre span.number { color: var(--hmk-code-number) !important; }
+  #article-container figure.highlight .code pre span.comment { color: var(--hmk-code-comment) !important; font-style: italic; font-weight: normal !important;}
+  #article-container figure.highlight .code pre span.built_in, #article-container figure.highlight .code pre span.literal, #article-container figure.highlight .code pre span.type { color: var(--hmk-code-builtin) !important; }
+  #article-container figure.highlight .code pre span.name, #article-container figure.highlight .code pre span.tag { color: var(--hmk-code-tag) !important; }
+  #article-container figure.highlight .code pre span.attr, #article-container figure.highlight .code pre span.attribute, #article-container figure.highlight .code pre span.variable { color: var(--hmk-code-attr) !important; }
+  #article-container figure.highlight .code pre span.punctuation { color: var(--hmk-code-punctuation) !important; font-weight: normal !important;}
+  
+  /* 📚 奇观2号：专属交互式原生折叠大卡片 (.hmk-fold 逻辑域) */
+  details.hmk-fold { width: 100%; display: block; border-radius: 10px; background: rgba(255, 255, 255, 0.6) !important; backdrop-filter: blur(25px) saturate(1.2); -webkit-backdrop-filter: blur(25px) saturate(1.2); border: 1px solid rgba(255, 255, 255, 0.6); box-shadow: 0 5px 15px rgba(0,0,0,0.05), inset 1px 1px 3px rgba(255,255,255,0.6); overflow: hidden; margin: 2.2rem 0; transition: background 0.3s ease; }
+  details.hmk-fold summary { padding: 14px 22px; font-weight: bold; color: #444; background: linear-gradient(to right, rgba(180, 166, 201, 0.25), transparent); list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; transition: all 0.3s; border-bottom: 1px solid transparent; outline: none; }
+  details.hmk-fold summary::-webkit-details-marker { display: none; } 
+  details.hmk-fold summary:hover { background: linear-gradient(to right, rgba(180, 166, 201, 0.4), rgba(255, 255, 255, 0.2)); color: var(--hmk-hover-title-color); }
+  details.hmk-fold[open] { background: rgba(255,255,255,0.8) !important; border-bottom: 1px solid rgba(180,166,201,0.2);}
+  details.hmk-fold[open] summary { border-bottom: 1px solid rgba(180, 166, 201, 0.2); background: linear-gradient(to right, rgba(180, 166, 201, 0.45), rgba(255,255,255, 0.5)); color: var(--hmk-theme-color); text-shadow: 0px 1px 2px rgba(255,255,255,0.5);}
+  .hmk-fold-title { font-size: 1.15rem; font-family: var(--hmk-font-family); letter-spacing: 1px;}
+  .hmk-fold-state { font-size: 0.95rem; font-weight: normal; opacity: 0.8; padding: 2px 8px; border-radius: 6px; border: 1px dashed rgba(180,166,201,0.8); transition: all 0.3s;}
+  details.hmk-fold[open] .hmk-fold-state { border: 1px solid var(--hmk-theme-color); opacity: 1; background: var(--hmk-theme-color); color: #fff !important; box-shadow: 0 2px 5px rgba(180,166,201,0.4);}
+  details.hmk-fold summary .hmk-fold-state::after { content: " ▼ 展开细览"; }
+  details.hmk-fold[open] summary .hmk-fold-state::after { content: " ▲ 确认收起"; }
+  .hmk-fold-content { padding: 20px 24px; color: var(--hmk-hero-desc-color); line-height: var(--hmk-article-line-height); }
+  /* 内层段落修复继承引擎！确保无论有几个通过回车触发出的段落都保持标准2em，完美处理文本间断 */
+  .hmk-fold-content p { font-size: var(--hmk-article-text-size) !important; text-indent: var(--hmk-article-text-indent) !important; line-height: var(--hmk-article-line-height) !important; margin: 0 0 1rem 0;}
+  .hmk-fold-content p:last-child { margin-bottom: 0 !important; }
+  [data-theme='dark'] details.hmk-fold { background: rgba(30, 32, 38, 0.3) !important; border-color: rgba(255,255,255,0.08); box-shadow: 0 5px 20px rgba(0,0,0,0.3); }
+  [data-theme='dark'] details.hmk-fold summary { background: linear-gradient(to right, rgba(146, 108, 230, 0.15), transparent); color: #ccc;}
+  [data-theme='dark'] details.hmk-fold[open] { background: rgba(40, 42, 50, 0.5) !important; }
+  [data-theme='dark'] details.hmk-fold[open] summary { background: linear-gradient(to right, rgba(146, 108, 230, 0.25), rgba(30,32,38,0.2)); color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.5); border-bottom: 1px solid rgba(255,255,255,0.08);}
+  [data-theme='dark'] details.hmk-fold[open] .hmk-fold-state { box-shadow: 0 2px 8px rgba(0,0,0,0.5); color:#fff !important;}
+  
+  /* 📋 原本常规表格修饰层 */
   #article-container > table { width: 100% !important; margin: 2rem 0 !important; border-collapse: collapse !important; border-radius: 12px !important; overflow: hidden !important; box-shadow: 0 4px 15px rgba(0,0,0,0.05), inset 1px 1px 3px rgba(255,255,255,0.6) !important; background: rgba(255, 255, 255, 0.5) !important; backdrop-filter: blur(10px) !important; -webkit-backdrop-filter: blur(10px) !important; display: table !important; word-break: break-all !important; }
   #article-container > table thead { background: var(--hmk-theme-color) !important; color: #fff !important; text-shadow: 0px 1px 2px rgba(0,0,0,0.2) !important; }
   #article-container > table th, #article-container > table td { padding: 12px 18px !important; border-bottom: 1px solid rgba(0,0,0,0.06) !important; text-align: center !important; text-indent: 0 !important; vertical-align: middle !important; line-height: 1.5 !important; }
@@ -295,7 +376,7 @@
   [data-theme='dark'] .hmk-blur { text-shadow: 0 0 7px rgba(255,255,255,0.5) !important; }
 
   /* 🪀 RPG 文字游戏动效基建引擎 */
-  /* 🐛 这里的 text-indent: 0 极为关键，成功避免碎片字块继承父级段落缩进导致被拉出鸿沟 BUG */
+  /* 🐛 text-indent: 0 极为关键，成功避免单字继承父级段落缩进导致被拉出鸿沟 BUG */
   .hmk-text-float span, .hmk-text-shake span { display: inline-block; vertical-align: baseline; font-family: inherit; text-indent: 0 !important; }
   @keyframes hmk-anim-float { 
       0%, 100% { transform: translateY(0); } 
@@ -308,7 +389,6 @@
       75% { transform: translate(-1px, -1px) rotate(0deg); }
   }
   .hmk-text-float span { animation: hmk-anim-float 2.5s ease-in-out infinite; }
-  /* 降低了狂乱晃动的刺眼程度，速度调平柔和 */
   .hmk-text-shake span { animation: hmk-anim-shake 0.4s linear infinite; }
 
   /* 👉 以下为原有的骨架安全矩阵，无需改动 */
@@ -538,24 +618,96 @@
     const imgPool = [ "/img/Brimstone_Akari.png", "/img/Alice.jpg", "/img/Another.png", "/img/Regent.png", "/img/Santa_Otto.png" ];
     const defaultImgs = [ "/img/Default_Cover.png" ];
 
-    /* --- 🔮 核心增量法术：DOM防粉碎扫描 与 文字生命化赋予器 --- */
+    /* --- 🔮 核心增量法术1号：神级绝护层代码高亮（零DOM破坏，安全漫步级引擎） --- */
+    function buildCodeHighlight() {
+        document.querySelectorAll('#article-container figure.highlight').forEach(block => {
+            let classStr = block.className.toLowerCase();
+            let attrLang = (block.getAttribute('data-lang') || '').toLowerCase();
+            let langSpan = block.querySelector('.code-lang');
+            let langText = langSpan ? langSpan.textContent.toLowerCase() : '';
+
+            if (classStr.includes('gdscript') || classStr.includes('plain') || attrLang.includes('gdscript') || attrLang.includes('plain') || langText.includes('gdscript') || langText.includes('plain')) {
+                
+                if (langSpan) langSpan.textContent = 'GDSCRIPT';
+                
+                let codeContainer = block.querySelector('.code pre');
+                if(!codeContainer || codeContainer.hasAttribute('data-gd-fix')) return;
+                codeContainer.setAttribute('data-gd-fix', '1');
+                
+                /* 🛸 真·魔法：启动文本穿梭幽灵引擎，绕开全部错置换行<br>及所有未知深坑DOM表皮 */
+                let walker = document.createTreeWalker(codeContainer, NodeFilter.SHOW_TEXT, null, false);
+                let textNodes = [];
+                let n;
+                while (n = walker.nextNode()) textNodes.push(n);
+                
+                textNodes.forEach(node => {
+                    let rawText = node.nodeValue;
+                    if(!rawText || !rawText.trim()) return; /* 如果只是占位的空行、回车空格文本直接放过！从而保持完美垂直阵列 */
+
+                    let tempStore = [];
+                    let pushStr = val => { tempStore.push(val); return `__GDMK_${tempStore.length-1}__`; };
+                    
+                    /* 为免转义导致的安全问题预防护甲 */
+                    let lineText = rawText.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                    
+                    lineText = lineText.replace(/&quot;.*?&quot;|&#39;.*?&#39;|".*?"|'.*?'/g, match => pushStr(`<span class="string">${match}</span>`));
+                    lineText = lineText.replace(/#.*/g, match => pushStr(`<span class="comment">${match}</span>`));
+                    lineText = lineText.replace(/@[A-Za-z0-9_]+/g, match => pushStr(`<span class="attr">${match}</span>`));
+                    lineText = lineText.replace(/\b([a-zA-Z_][a-zA-Z0-9_]*)(?=\s*\()/g, match => pushStr(`<span class="title function_">${match}</span>`));
+                    lineText = lineText.replace(/\b(extends|func|var|if|elif|else|for|while|match|break|continue|pass|return|class|class_name|enum|signal|await|yield|const|static|in|and|or|not|is|as|void)\b/g, match => pushStr(`<span class="keyword">${match}</span>`));
+                    lineText = lineText.replace(/\b(self|true|false|null|PI|TAU|INF|NAN)\b/g, match => pushStr(`<span class="built_in">${match}</span>`));
+                    lineText = lineText.replace(/\b(\d+(\.\d+)?)\b/g, match => pushStr(`<span class="number">${match}</span>`));
+                    
+                    if(tempStore.length > 0) {
+                        lineText = lineText.replace(/__GDMK_(\d+)__/g, (match, idx) => tempStore[idx]);
+                        let wrapper = document.createElement('span');
+                        wrapper.innerHTML = lineText;
+                        
+                        /* 神仙碎片置换手术：原地换骨而绝不改乱原来的任何父节点层级！所以绝不崩塌合并 */
+                        let frag = document.createDocumentFragment();
+                        while(wrapper.firstChild) frag.appendChild(wrapper.firstChild);
+                        node.parentNode.replaceChild(frag, node);
+                    }
+                });
+            }
+        });
+    }
+
+    /* --- 🔮 核心增量法术2号：WIKI排版防御隔离墙 与 原生折叠引擎 --- */
     function parseWikiSyntax() {
         const container = document.getElementById('article-container');
         if(!container || container.hasAttribute('data-wiki-parsed')) return;
         container.setAttribute('data-wiki-parsed', '1');
 
+        let containerHtml = container.innerHTML;
+        if (containerHtml.includes('{=fold|')) {
+            let preBlocks = [];
+            containerHtml = containerHtml.replace(/<(pre|code|figure)[\s\S]*?<\/\1>/gi, match => { preBlocks.push(match); return `___HMK_SAFE_BLOCK_${preBlocks.length-1}___`; });
+            
+            let foldChanged = false;
+            containerHtml = containerHtml.replace(/\{=fold\|(.*?)\|([\s\S]*?)=\}/g, (match, title, txt) => {
+                foldChanged = true;
+                return `</p><details class="hmk-fold"><summary><span class="hmk-fold-title">${title}</span><span class="hmk-fold-state"></span></summary><div class="hmk-fold-content"><p>${txt}</p></div></details><p>`;
+            });
+
+            if (foldChanged) {
+                containerHtml = containerHtml.replace(/___HMK_SAFE_BLOCK_(\d+)___/g, (match, i) => preBlocks[i]);
+                container.innerHTML = containerHtml;
+            }
+        }
+
         let footnoteList = [];
         const targetBlocks = container.querySelectorAll('p, li, td, th, h1, h2, h3, h4, h5, h6');
-        
-        const regex = /\{=(color|黑幕|模糊|ruby|note|float|shake)\|([\s\S]*?)=\}/g;
+        const inlineRegex = /\{=(color|黑幕|模糊|ruby|note|float|shake)\|([\s\S]*?)=\}/g;
 
         targetBlocks.forEach(block => {
-            if (!document.body.contains(block) || block.closest('figure.highlight, pre, code')) return; 
+            /* 🛡️ 究极隔离网：一切身处于代码框内、具有工具栏属性、或者身处于旁侧小标记的行号标签结构等区域内的字词，绝不碰触其分毫！杜绝误伤导致压缩代码间距！ */
+            if (!document.body.contains(block) || block.closest('figure.highlight, figure, pre, code, .code, .gutter, .highlight-tools')) return;
 
             let html = block.innerHTML;
             if (html.includes('{=')) {
                 let changed = false;
-                html = html.replace(regex, (match, cmd, content) => {
+                html = html.replace(inlineRegex, (match, cmd, content) => {
                     changed = true;
                     if (cmd === 'color') {
                         let firstPipe = content.indexOf('|');
@@ -566,14 +718,10 @@
                     } else if (cmd === '黑幕') {
                         let firstPipe = content.indexOf('|');
                         let txt = content; let hover = '你知道的太多了';
-                        if (firstPipe !== -1) {
-                            txt = content.substring(0, firstPipe);
-                            hover = content.substring(firstPipe + 1) || hover;
-                        }
+                        if (firstPipe !== -1) { txt = content.substring(0, firstPipe); hover = content.substring(firstPipe + 1) || hover; }
                         return `<span class="hmk-heimu" title="${hover}">${txt}</span>`;
-                    } else if (cmd === '模糊') {
-                        return `<span class="hmk-blur">${content}</span>`;
-                    } else if (cmd === 'ruby') {
+                    } else if (cmd === '模糊') { return `<span class="hmk-blur">${content}</span>`; } 
+                    else if (cmd === 'ruby') {
                         let firstPipe = content.indexOf('|');
                         if (firstPipe === -1) return match;
                         let base = content.substring(0, firstPipe);
@@ -620,12 +768,10 @@
             fnDiv.className = 'footnotes';
             let ol = document.createElement('ol');
             ol.style.cssText = "margin: 0; padding-left: 20px;";
-            
             footnoteList.forEach((text, i) => {
                 let id = i + 1;
                 let li = document.createElement('li');
-                li.id = `hmk-fn-${id}`;
-                li.className = "footnote-item";
+                li.id = `hmk-fn-${id}`; li.className = "footnote-item";
                 li.innerHTML = `<span>${text}</span> <a href="#hmk-fnref-${id}" style="color:var(--hmk-theme-color); font-weight:bold; padding-left: 8px; text-decoration:none;" title="回到刚刚看的地方">↩</a>`;
                 ol.appendChild(li);
             });
@@ -745,7 +891,13 @@
 
     function bootEngine() {
         initBannerAndText(); initCenterSearchBar(); remodelPosts(); relocatePostTitleMeta(); initObsidianGraph(); 
-        parseWikiSyntax(); /* 解析你的神奇笔记代码！ */
+        
+        parseWikiSyntax(); 
+        
+        /* 🗡️ 时间裂隙破甲防守！扫描三次杜绝复生漏网之鱼！ */
+        buildCodeHighlight();
+        setTimeout(buildCodeHighlight, 300);
+        setTimeout(buildCodeHighlight, 800);
         
         Promise.race([ document.fonts ? document.fonts.ready : Promise.resolve(), new Promise(res => setTimeout(res, 800)) ]).then(() => { requestAnimationFrame(() => { document.documentElement.classList.add('hmk-ready'); }); });
     }
