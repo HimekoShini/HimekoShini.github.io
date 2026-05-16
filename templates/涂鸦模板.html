@@ -163,12 +163,14 @@
   isToc: false,
   pageType: 'page'
 }</script><style>
+  html { scroll-behavior: smooth; } /* 让所有附录和笔记跳跃都有平滑过度 */
+  
   @font-face {
-      font-family: 'Huawen'; /* 这是你自己给它起的代号 */
-      src: url('/fonts/huawen.woff2') format('truetype'); /* 引用的真实地址，记得加最前面的斜杠 / */
+      font-family: 'Huawen'; 
+      src: url('/fonts/huawen.woff2') format('truetype'); 
       font-weight: normal;
       font-style: normal;
-      font-display: swap; /* 优化加载体验，加载前先显示默认字体 */
+      font-display: swap; 
   }
   /* 🎨🎨🎨 👉 [可自定义]: 终极排字与全局色彩矩阵（白天模式） 🎨🎨🎨 */
   :root {
@@ -181,108 +183,120 @@
 
       /* --- 顶流大片区：首篇主推文章卡片参数 --- */
       --hmk-hero-title-color: #ffffff;   /* 标题颜色 */
-      
-      --hmk-hero-title-size: 3.5rem;       /* 👈 横幅标题【正常字】的字号 */
-      --hmk-hero-title-first-size: 2em;  /* 👈 横幅标题【开头首字】特大字号倍率 (1.6em代表是平常字的1.6倍大小) */
-      --hmk-hero-title-first-offset: -6px;  /* 👈 [终极修正] 像素级垂直平齐微调：若字体底部没和右侧字对齐，可以试着填 2px (往下偏移) 或 -2px (往上偏移)！默认0即可完美齐底。 */
-      
-      --hmk-hero-desc-color: #A6A095;    /* 摘要文字颜色 */
-      --hmk-hero-desc-size: 1.05rem;     /* 摘要文字字号 */
-      --hmk-hero-quote-color: #8A68B0;   /* 大横幅巨型双引号颜色 (日间特调紫) */
+      --hmk-hero-title-size: 3.5rem;       /* 横幅标题【正常字】字号 */
+      --hmk-hero-title-first-size: 2em;  /* 横幅标题【开头首字】特大倍率 */
+      --hmk-hero-title-first-offset: -6px;  /* 字底偏移修复修正值 */
+      --hmk-hero-desc-color: #A6A095;    
+      --hmk-hero-desc-size: 1.05rem;     
+      --hmk-hero-quote-color: #8A68B0;   
 
       /* --- 中置分割线配置 --- */
       --hmk-sep-title-color: var(--hmk-theme-color); 
       --hmk-sep-title-size: 1.65rem;
 
       /* --- 网格小片区：下方过往文章卡片参数 --- */
-      --hmk-grid-title-color: var(--hmk-theme-color); /* 小卡标题默认色 */
-      --hmk-grid-title-size: 1.15rem;                 /* 小卡标题字号 */
-      --hmk-grid-desc-color: #A6A095;                 /* 小卡内容简述颜色 */
-      --hmk-grid-desc-size: 0.9rem;                   /* 小卡内容简述字号 */
-      --hmk-grid-meta-color: #666666;                 /* 底部日期时间信息颜色 */
-      --hmk-grid-meta-size: 0.8rem;                   /* 底部时间字号 */
+      --hmk-grid-title-color: var(--hmk-theme-color); 
+      --hmk-grid-title-size: 1.15rem;                 
+      --hmk-grid-desc-color: #A6A095;                 
+      --hmk-grid-desc-size: 0.9rem;                   
+      --hmk-grid-meta-color: #666666;                 
+      --hmk-grid-meta-size: 0.8rem;                   
 
-      /* 📐📐 👉 [新增特性]: 你的文章正文排版中枢！字号、行距、首行缩进随意控制！ */
-      --hmk-article-text-size: 1.1rem;     /* 控制所有博文段落的文本大小（推荐范围 1.05rem 到 1.15rem 间游走体验） */
-      --hmk-article-line-height: 1.8;      /* 控制段落中文本行间的呼吸空间，默认 1.8 极具阅读感 */
-      --hmk-article-text-indent: 2em;      /* 控制段落首行缩进（2em 代表标准的两个中文字符宽度） */
-      --hmk-code-text-size: 0.95rem;       /* 专注锁定代码栏（包含黑框内的变量），稍小一些以防越界 */
+      /* 📐📐 👉 [新增特性]: 你的文章正文排版中枢 */
+      --hmk-article-text-size: 1.1rem;     
+      --hmk-article-line-height: 1.8;      
+      --hmk-article-text-indent: 2em;      
+      --hmk-code-text-size: 0.95rem;       
 
-      /* 内部继承锁定，请勿动这两行 */
+      /* 内部继承锁定，请勿动 */
       --theme-color: var(--hmk-theme-color) !important;
       --text-bg-hover: var(--hmk-theme-color) !important;
   }
 
-  /* 👑 字体夺权法阵：渗透至最深处文章与作者卡片 (绝不伤及代码高亮块) */
-  
-  /* 1. 首先接管并改写 Butterfly 主题真正的原生底层字体核心变量 */
-  :root {
-      --global-font: var(--hmk-font-family) !important; 
-  }
+  /* 👑 字体夺权法阵：渗透至最深处 */
+  :root { --global-font: var(--hmk-font-family) !important; }
 
-  /* 2. 直接点名狙杀原生最顽固的标题、段落、个人名片、标签文本！强行洗脑成你的专属字体 */
-  body, 
-  #aside-content .card-info, 
-  #aside-content .card-info .author-info__name, 
-  #aside-content .card-info .author-info__description, 
-  #article-container p, 
-  #article-container h1, 
-  #article-container h2, 
-  #article-container h3, 
-  #article-container h4, 
-  #article-container h5, 
-  #article-container h6,
-  #article-container li,
-  #article-container span:not([class]),
-  .post-title,
-  .flink-list .flink-item-name,
-  .flink-list .flink-item-desc {
-      font-family: var(--hmk-font-family) !important;
-  }
+  body, #aside-content .card-info, #aside-content .card-info .author-info__name, #aside-content .card-info .author-info__description, #article-container p, #article-container h1, #article-container h2, #article-container h3, #article-container h4, #article-container h5, #article-container h6, #article-container li, #article-container span:not([class]), .post-title, .flink-list .flink-item-name, .flink-list .flink-item-desc { font-family: var(--hmk-font-family) !important; }
 
-  /* 📏 👉 精准注入字号控制法案（将段落和表格/列表切分，完美兼容中文首行缩进！） */
-  #article-container p {
-      font-size: var(--hmk-article-text-size) !important;
-      line-height: var(--hmk-article-line-height) !important;
-      text-indent: var(--hmk-article-text-indent) !important; /* 让文章纯文本段落自动空两格 */
-  }
+  /* 📏 👉 精准注入字号控制法案 */
+  #article-container p { font-size: var(--hmk-article-text-size) !important; line-height: var(--hmk-article-line-height) !important; text-indent: var(--hmk-article-text-indent) !important; }
   
-  #article-container li,
-  #article-container table {
-      font-size: var(--hmk-article-text-size) !important;
-      line-height: var(--hmk-article-line-height) !important;
-      /* 绝对不给列表元素加缩进，否则版面会直接撕裂崩坏 */
-  }
+  #article-container li, #article-container table { font-size: var(--hmk-article-text-size) !important; line-height: var(--hmk-article-line-height) !important; }
   
-  #article-container code, 
-  #article-container pre, 
-  figure.highlight pre, 
-  figure.highlight .line,
-  figure.highlight table * {
-      font-size: var(--hmk-code-text-size) !important;
-      text-indent: 0 !important; /* 代码框也绝对要封死缩进 */
-  }
+  #article-container code, #article-container pre, figure.highlight pre, figure.highlight .line, figure.highlight table *, .math.display *, .math.inline * { font-size: var(--hmk-code-text-size) !important; text-indent: 0 !important; }
 
-  /* 🌙🌙🌙 👉 [可自定义]: 暗面(夜间模式) 排字与色彩映射矩阵 🌙🌙🌙 */
+  /* 🌙🌙🌙 👉 [可自定义]: 暗面排字矩阵 */
   [data-theme='dark'] {
-      /* 暗夜下的博客主色彩 (推荐偏亮以便在黑底凸显) */
       --hmk-theme-color: #926CE6 !important; 
-      /* 暗夜下标题鼠标悬停的变换色 */
       --hmk-hover-title-color: #D2B7FF !important; 
-
-      /* 暗面特供适配色 */
-      --hmk-hero-desc-color: #cccccc !important;   /* 暗夜大片区简述颜色 */
-      --hmk-hero-quote-color: #D2B7FF !important;  /* 大横幅巨型双引号颜色 (夜间特调明亮紫) */
-
-      --hmk-grid-title-color: #ffffff !important;  /* 暗夜网格卡标题颜色（为了看得清常设为白） */
-      --hmk-grid-desc-color: #bbbbbb !important;   /* 暗夜网格简述灰度 */
-      --hmk-grid-meta-color: #888888 !important;   /* 暗夜底部日期标签灰度 */
-
+      --hmk-hero-desc-color: #cccccc !important;   
+      --hmk-hero-quote-color: #D2B7FF !important;  
+      --hmk-grid-title-color: #ffffff !important;  
+      --hmk-grid-desc-color: #bbbbbb !important;   
+      --hmk-grid-meta-color: #888888 !important;   
       --theme-color: var(--hmk-theme-color) !important;
       --text-bg-hover: var(--hmk-theme-color) !important;
   }
 
-  /* 👉 以下为结构锁定代码：控制布局、防拷贝护盾、背景极光和透明玻璃，如无特殊需求无需改动。 */
+  /* ------------------------------------------------------------- */
+  /* ✨ 极致维保计划: WIKI魔法拓展区排印法阵 (表/脚注/挂件解析与UI重塑) ✨*/
+  /* ------------------------------------------------------------- */
+  
+  /* 📋 表格水晶质感雕刻 */
+  #article-container > table { width: 100% !important; margin: 2rem 0 !important; border-collapse: collapse !important; border-radius: 12px !important; overflow: hidden !important; box-shadow: 0 4px 15px rgba(0,0,0,0.05), inset 1px 1px 3px rgba(255,255,255,0.6) !important; background: rgba(255, 255, 255, 0.5) !important; backdrop-filter: blur(10px) !important; -webkit-backdrop-filter: blur(10px) !important; display: table !important; word-break: break-all !important; }
+  #article-container > table thead { background: var(--hmk-theme-color) !important; color: #fff !important; text-shadow: 0px 1px 2px rgba(0,0,0,0.2) !important; }
+  #article-container > table th, #article-container > table td { padding: 12px 18px !important; border-bottom: 1px solid rgba(0,0,0,0.06) !important; text-align: center !important; text-indent: 0 !important; vertical-align: middle !important; line-height: 1.5 !important; }
+  #article-container > table tr:last-child td { border-bottom: none !important; }
+  #article-container > table tr { transition: background 0.3s ease !important; }
+  #article-container > table tr:hover { background: rgba(180, 166, 201, 0.15) !important; }
+  [data-theme='dark'] #article-container > table { background: rgba(30, 32, 38, 0.4) !important; box-shadow: 0 8px 25px rgba(0,0,0,0.3), inset 1px 1px 3px rgba(255,255,255,0.05) !important;}
+  [data-theme='dark'] #article-container > table th, [data-theme='dark'] #article-container > table td { border-bottom: 1px solid rgba(255,255,255,0.08) !important; }
+  [data-theme='dark'] #article-container > table tr:hover { background: rgba(255, 255, 255, 0.1) !important; }
+  #article-container > table p { text-indent: 0 !important; margin: 0 !important; } 
+
+  /* 🔖 全新Wiki体系的超精美脚注悬浮与页脚解释箱修饰 */
+  #article-container sup.hmk-note-mark { top: -0.5em !important; position: relative !important; font-size: 75% !important; line-height: 0 !important; vertical-align: baseline !important; scroll-margin-top: 100px; }
+  #article-container sup.hmk-note-mark a { padding: 0 4px !important; margin: 0 2px !important; background: var(--hmk-theme-color) !important; color: #fff !important; border-radius: 3px !important; text-decoration: none !important; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important; opacity: 0.9 !important; font-weight: bold !important; font-family: var(--hmk-font-family) !important; }
+  #article-container sup.hmk-note-mark a:hover { opacity: 1 !important; transform: scale(1.1) translateY(-2px) !important; box-shadow: 0 3px 8px rgba(0,0,0,0.15) !important; color:#fff !important; }
+  .footnotes { margin-top: 4.5rem !important; padding: 1.5rem 1.8rem !important; border-top: 2px dashed rgba(180, 166, 201, 0.5) !important; background: rgba(255,255,255,0.4) !important; border-radius: 12px !important; box-shadow: inset 1px 1px 5px rgba(255,255,255,0.8), 0 5px 15px rgba(0,0,0,0.02) !important;}
+  .footnotes p { font-size: 0.95rem !important; text-indent: 0 !important; color: var(--hmk-hero-desc-color) !important; margin: 0 !important; line-height: 1.6 !important;}
+  .footnotes .footnote-item { margin-bottom: 0.6rem !important; list-style-type: decimal; scroll-margin-top: 100px; color: var(--hmk-hero-desc-color); line-height: 1.6; }
+  .footnotes .footnote-item span { display: inline; text-indent: 0 !important; }
+  [data-theme='dark'] .footnotes { background: rgba(30, 32, 38, 0.25) !important; border-top: 2px dashed rgba(255,255,255,0.1) !important; box-shadow: inset 1px 1px 5px rgba(255,255,255,0.05), 0 5px 15px rgba(0,0,0,0.2) !important;}
+  [data-theme='dark'] #article-container sup.hmk-note-mark a:hover { box-shadow: 0 3px 10px rgba(146,108,230,0.4) !important;}
+
+  /* 🎭 极客黑幕、模糊屏障与超清拼音注引 */
+  .hmk-heimu { background-color: #2b2b2b !important; color: #2b2b2b !important; border-radius: 4px !important; padding: 2px 5px !important; margin: 0 3px !important; transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1) !important; text-shadow: none !important; cursor: help !important; user-select: none !important; font-family: inherit !important;}
+  .hmk-heimu:hover, .hmk-heimu:active { color: #ffffff !important; box-shadow: 0 3px 10px rgba(0,0,0,0.4) !important;}
+  
+  .hmk-blur { color: transparent !important; text-shadow: 0 0 7px rgba(0,0,0,0.45) !important; transition: all 0.4s ease !important; cursor: help !important; padding: 0 4px !important; user-select: none !important; font-family: inherit !important;}
+  .hmk-blur:hover, .hmk-blur:active { color: inherit !important; text-shadow: none !important; }
+  
+  #article-container ruby { font-family: inherit !important; color: inherit !important; padding: 0 2px !important; margin: 0 1px !important; vertical-align: top;}
+  #article-container rt { font-size: 0.65em !important; color: var(--hmk-theme-color) !important; font-weight: bold !important; transform: translateY(-1px); user-select: none !important; text-indent: 0 !important; font-family: 'Microsoft Yahei', sans-serif !important;}
+  
+  [data-theme='dark'] .hmk-heimu { background-color: #525252 !important; color: #525252 !important; }
+  [data-theme='dark'] .hmk-heimu:hover, [data-theme='dark'] .hmk-heimu:active { color: #fff !important; box-shadow: 0 3px 10px rgba(0,0,0,0.7) !important;}
+  [data-theme='dark'] .hmk-blur { text-shadow: 0 0 7px rgba(255,255,255,0.5) !important; }
+
+  /* 🪀 RPG 文字游戏动效基建引擎 */
+  /* 🐛 这里的 text-indent: 0 极为关键，成功避免碎片字块继承父级段落缩进导致被拉出鸿沟 BUG */
+  .hmk-text-float span, .hmk-text-shake span { display: inline-block; vertical-align: baseline; font-family: inherit; text-indent: 0 !important; }
+  @keyframes hmk-anim-float { 
+      0%, 100% { transform: translateY(0); } 
+      50% { transform: translateY(-4px); } 
+  }
+  @keyframes hmk-anim-shake { 
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      25% { transform: translate(-1px, 1px) rotate(-1deg); }
+      50% { transform: translate(1px, -1px) rotate(1deg); }
+      75% { transform: translate(-1px, -1px) rotate(0deg); }
+  }
+  .hmk-text-float span { animation: hmk-anim-float 2.5s ease-in-out infinite; }
+  /* 降低了狂乱晃动的刺眼程度，速度调平柔和 */
+  .hmk-text-shake span { animation: hmk-anim-shake 0.4s linear infinite; }
+
+  /* 👉 以下为原有的骨架安全矩阵，无需改动 */
   body { caret-color: transparent !important; }
   * { outline: none !important; }
   input, textarea { caret-color: var(--hmk-theme-color) !important; user-select: text !important; pointer-events: auto !important; }
@@ -290,7 +304,6 @@
   #article-container a { color: var(--hmk-theme-color) !important; transition: opacity 0.3s !important; }
   #article-container a:hover { opacity: 0.7 !important; text-decoration: underline !important; }
 
-  /* 🗡️ 精确命中！锁定归档页独有的容器名叫 #page-site-info，彻底把它抹杀干净！ */
   #page-header #page-site-info { display: none !important; opacity: 0; pointer-events: none; }
 
   #search-button, #search-mask, .search-dialog { display: none !important; pointer-events: none !important; width: 0 !important; height: 0 !important; }
@@ -329,7 +342,7 @@
   [data-theme='dark'] #article-container hr::before { text-shadow: 0 0 10px rgba(146, 108, 230, 0.7) !important; opacity: 1 !important; }
   #article-container blockquote { position: relative !important; width: fit-content !important; max-width: 90% !important; margin: 1rem auto 1.5rem auto !important; padding: 1rem 1.5rem 1rem 2.8rem !important; background: rgba(255, 255, 255, 0.4) !important; border-radius: 12px !important; box-shadow: 0 4px 15px rgba(0,0,0,0.04), inset 1px 1px 3px rgba(255,255,255,0.8) !important; border: none !important; color: var(--hmk-hero-desc-color) !important; }
   #article-container blockquote::before { content: '' !important; position: absolute !important; left: 16px !important; top: 20% !important; height: 60% !important; width: 5px !important; background-color: var(--hmk-theme-color) !important; border-radius: 4px !important; }
-  #article-container blockquote > p { margin: 0 !important; }
+  #article-container blockquote > p { margin: 0 !important; text-indent: 0 !important;}
   [data-theme='dark'] #article-container blockquote { background: rgba(30, 32, 38, 0.3) !important; box-shadow: 0 4px 15px rgba(0,0,0,0.2), inset 1px 1px 2px rgba(255,255,255,0.1) !important; }
   #post > .post-title.hmk-relocated { text-align: center !important; font-size: 2.3rem !important; font-weight: 800 !important; margin: 0.5rem 0 2rem 0 !important; color: #333333 !important; text-shadow: 0px 2px 4px rgba(0,0,0,0.08) !important; display: block !important; }
   #post > #post-meta.hmk-relocated { margin-top: 3.5rem !important; padding-top: 2rem !important; border-top: 1px dashed rgba(128, 128, 128, 0.3) !important; text-align: center !important; display: flex !important; flex-direction: column !important; gap: 0.5rem !important; color: var(--hmk-grid-meta-color) !important; font-size: 0.85rem !important; }
@@ -351,17 +364,13 @@
   #aside-content .card-widget:not(.card-info) { display: none !important; }
   html, body, #web_bg, #body-wrap, .layout, .page { background: transparent !important; }
   
-  /* ✨ 无论日月流转，世界背壳固定在 F0FFF0！夜间仅仅将明亮和彩度削减护眼 */
   #hmk-glass-stage { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; overflow: hidden; background: #F0FFF0 !important; z-index: -9999; pointer-events: none; }
   [data-theme='dark'] #hmk-glass-stage { background: #F0FFF0 !important; filter: brightness(0.4) saturate(0.8) !important; }
-  
   #hmk-glass-stage::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; backdrop-filter: blur(120px); -webkit-backdrop-filter: blur(120px); z-index: 10; }
   
-  /* 🛡️ 终极闪烁防御护盾 (FOUC天鹅绒帷幕)：在我们的自定义阵法组装完成并确保字体就位之前，整个原版丑陋身体完全不可见！ */
   #body-wrap { opacity: 0; transform: translateY(15px); transition: opacity 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); }
   html.hmk-ready #body-wrap { opacity: 1; transform: translateY(0); }
 
-  /* ✨ 光球色彩库（极光）*/
   .hmk-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.85; animation: hmkRoam infinite alternate ease-in-out; }
   .hmk-orb1 { width: 85vw; height: 85vh; background: #CCCCFF; top: -15vh; left: -15vw; animation-duration: 24s; } 
   .hmk-orb2 { width: 75vw; height: 75vh; background: #FFFDD0; bottom: -15vh; right: -10vw; animation-duration: 28s; animation-direction: reverse; } 
@@ -389,15 +398,12 @@
   .hmk-hero-mask { position: absolute; left: 0; bottom: 0; width: 100%; height: 60%; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); pointer-events: none; z-index: 2; }
   .hmk-hero-title { position: absolute; bottom: 25px; left: 30px; width: calc(100% - 60px); color: var(--hmk-hero-title-color) !important; font-size: var(--hmk-hero-title-size); font-weight: bold; z-index: 10; margin: 0; text-shadow: 0 3px 10px rgba(0,0,0,0.8); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; white-space: normal; line-height: 1.25; letter-spacing: 1px; transition: color 0.3s ease !important; }
   .hmk-hero:hover .hmk-hero-title { color: var(--hmk-hover-title-color) !important; }
-  
-  /* 🗡️ 完美纠偏！文字真正的底部基线对齐！外加极客级别的纵向推拉遥控器，无视由于特殊字体产生的留白鸿沟。 */
   .hmk-dropcap { position: relative; top: var(--hmk-hero-title-first-offset); font-size: var(--hmk-hero-title-first-size) !important; font-family: inherit !important; line-height: 1; margin-right: 4px; display: inline-block; vertical-align: baseline !important; }
   
   .hmk-hero-right { width: 35% !important; flex: 0 0 35% !important; padding: 40px 30px !important; position: relative; display: flex; flex-direction: column; justify-content: center; background: transparent !important; overflow: hidden;}
-  
   .hmk-hero-quote { position: absolute; top: 10px; left: 20px; font-size: 6rem; font-family: Georgia, serif; color: var(--hmk-hero-quote-color) !important; opacity: 0.18 !important; line-height: 1; pointer-events: none; transition: color 0.3s ease !important; }
+  .hmk-hero-excerpt { color: var(--hmk-hero-desc-color); font-size: var(--hmk-hero-desc-size); line-height: 1.8; position: relative; z-index: 5; display: -webkit-box; -webkit-line-clamp: 7; -webkit-box-orient: vertical; overflow: hidden; text-indent: 0;}
   
-  .hmk-hero-excerpt { color: var(--hmk-hero-desc-color); font-size: var(--hmk-hero-desc-size); line-height: 1.8; position: relative; z-index: 5; display: -webkit-box; -webkit-line-clamp: 7; -webkit-box-orient: vertical; overflow: hidden; }
   .hmk-sep { width: 100% !important; font-size: var(--hmk-sep-title-size) !important; font-weight: 900 !important; color: var(--hmk-sep-title-color) !important; margin: 25px 0 10px 0 !important; padding: 0 !important; line-height: 1 !important; display: block !important; text-shadow: 0px 2px 5px rgba(0,0,0,0.15) !important;}
   [data-theme='dark'] .hmk-sep { text-shadow: 0px 3px 8px rgba(0,0,0,0.5) !important; }
   .hmk-grid-item { width: calc(33.333% - 13.33px) !important; aspect-ratio: 5 / 6 !important; height: auto !important; flex-direction: column !important; }
@@ -495,9 +501,6 @@
         }
     }
 
-    /* 📚📚📚 👉 [可自定义]: 前端文字文案库与图片壁纸源矩阵 📚📚📚 */
-
-    // 👉 [自定义文案]: 网站标题下方的随机跳动文案，每次刷新和等待都会轮播这些极客语录，可以自行加减
     const textPool = [
         "「可是她们的话分不清真假」—— 赵雷《朵》",
         "「只有那明月，知道过程壮烈」—— 许一鸣《一等情事》",
@@ -517,21 +520,105 @@
         "「Though you have left」—— mili《world.execute (me) ;》"
     ];
     
-    // 👉 [自定义背景]: 首页头部大屏幕背后轮播的壁纸库。可替换为任何你心仪的图床链接 (逗号隔开)
-    const imgPool = [ 
-        "/img/Brimstone_Akari.png",
-        "/img/Alice.jpg", 
-        "/img/Another.png", 
-        "/img/Regent.png",
-        "/img/Santa_Otto.png" 
-    ];
-    
-    // 👉 [自定义缺省图]: 如果你发的一篇文章没有设置 cover (封面照)，卡片阵列将会从这数组里拿图补充！
-    const defaultImgs = [
-        "/img/Default_Cover.png"
-    ];
+    const imgPool = [ "/img/Brimstone_Akari.png", "/img/Alice.jpg", "/img/Another.png", "/img/Regent.png", "/img/Santa_Otto.png" ];
+    const defaultImgs = [ "/img/Default_Cover.png" ];
 
-    /* --- 底层核心执行法术 --- */
+    /* --- 🔮 核心增量法术：DOM防粉碎扫描 与 文字生命化赋予器 --- */
+    function parseWikiSyntax() {
+        const container = document.getElementById('article-container');
+        if(!container || container.hasAttribute('data-wiki-parsed')) return;
+        container.setAttribute('data-wiki-parsed', '1');
+
+        let footnoteList = [];
+        const targetBlocks = container.querySelectorAll('p, li, td, th, h1, h2, h3, h4, h5, h6');
+        
+        const regex = /\{=(color|黑幕|模糊|ruby|note|float|shake)\|([\s\S]*?)=\}/g;
+
+        targetBlocks.forEach(block => {
+            if (!document.body.contains(block) || block.closest('figure.highlight, pre, code')) return; 
+
+            let html = block.innerHTML;
+            if (html.includes('{=')) {
+                let changed = false;
+                html = html.replace(regex, (match, cmd, content) => {
+                    changed = true;
+                    if (cmd === 'color') {
+                        let firstPipe = content.indexOf('|');
+                        if (firstPipe === -1) return match;
+                        let c = content.substring(0, firstPipe);
+                        let txt = content.substring(firstPipe + 1);
+                        return `<span style="color:${c}">${txt}</span>`;
+                    } else if (cmd === '黑幕') {
+                        let firstPipe = content.indexOf('|');
+                        let txt = content; let hover = '你知道的太多了';
+                        if (firstPipe !== -1) {
+                            txt = content.substring(0, firstPipe);
+                            hover = content.substring(firstPipe + 1) || hover;
+                        }
+                        return `<span class="hmk-heimu" title="${hover}">${txt}</span>`;
+                    } else if (cmd === '模糊') {
+                        return `<span class="hmk-blur">${content}</span>`;
+                    } else if (cmd === 'ruby') {
+                        let firstPipe = content.indexOf('|');
+                        if (firstPipe === -1) return match;
+                        let base = content.substring(0, firstPipe);
+                        let top = content.substring(firstPipe + 1);
+                        return `<ruby>${base}<rp>(</rp><rt>${top}</rt><rp>)</rp></ruby>`;
+                    } else if (cmd === 'note') {
+                        let fIdx = footnoteList.length + 1;
+                        footnoteList.push(content);
+                        return `<sup class="hmk-note-mark" id="hmk-fnref-${fIdx}"><a href="#hmk-fn-${fIdx}">${fIdx}</a></sup>`;
+                    } else if (cmd === 'float' || cmd === 'shake') {
+                        let tempDiv = document.createElement('div');
+                        tempDiv.innerHTML = content;
+                        let charCounter = { val: 0 };
+                        let wrapNode = function(node) {
+                            if (node.nodeType === 3) {
+                                let frag = document.createDocumentFragment();
+                                for (let char of node.nodeValue) {
+                                    if (char.trim() === '') {
+                                        frag.appendChild(document.createTextNode(char));
+                                    } else {
+                                        let s = document.createElement('span');
+                                        s.textContent = char;
+                                        s.style.animationDelay = cmd === 'float' ? `${charCounter.val * 0.1}s` : `${Math.random() * 0.5}s`;
+                                        frag.appendChild(s);
+                                        charCounter.val++;
+                                    }
+                                }
+                                node.parentNode.replaceChild(frag, node);
+                            } else if (node.nodeType === 1) {
+                                Array.from(node.childNodes).forEach(wrapNode);
+                            }
+                        };
+                        Array.from(tempDiv.childNodes).forEach(wrapNode);
+                        return `<span class="hmk-text-${cmd}">${tempDiv.innerHTML}</span>`;
+                    }
+                    return match;
+                });
+                if (changed) block.innerHTML = html;
+            }
+        });
+
+        if (footnoteList.length > 0) {
+            let fnDiv = document.createElement('div');
+            fnDiv.className = 'footnotes';
+            let ol = document.createElement('ol');
+            ol.style.cssText = "margin: 0; padding-left: 20px;";
+            
+            footnoteList.forEach((text, i) => {
+                let id = i + 1;
+                let li = document.createElement('li');
+                li.id = `hmk-fn-${id}`;
+                li.className = "footnote-item";
+                li.innerHTML = `<span>${text}</span> <a href="#hmk-fnref-${id}" style="color:var(--hmk-theme-color); font-weight:bold; padding-left: 8px; text-decoration:none;" title="回到刚刚看的地方">↩</a>`;
+                ol.appendChild(li);
+            });
+            fnDiv.appendChild(ol);
+            container.appendChild(fnDiv);
+        }
+    }
+
     function initBannerAndText() {
       const header = document.getElementById('page-header');
       if (header && !document.getElementById('bg-slider-container')) {
@@ -641,18 +728,11 @@
         draw(); window.addEventListener('resize', () => { if(cloudBox.clientWidth) cw = cvs.width = cloudBox.clientWidth; });
     }
 
-    /* 🛡️ 战舰核心起航系统：必须确保字体和所有变形代码彻底完成后，才能通知顶层 CSS 揭下隐藏幕布！防止任何闪烁 */
     function bootEngine() {
         initBannerAndText(); initCenterSearchBar(); remodelPosts(); relocatePostTitleMeta(); initObsidianGraph(); 
+        parseWikiSyntax(); /* 解析你的神奇笔记代码！ */
         
-        Promise.race([
-            document.fonts ? document.fonts.ready : Promise.resolve(),
-            new Promise(res => setTimeout(res, 800)) /* 最大耐心阈值800毫秒 */
-        ]).then(() => {
-            requestAnimationFrame(() => {
-                document.documentElement.classList.add('hmk-ready');
-            });
-        });
+        Promise.race([ document.fonts ? document.fonts.ready : Promise.resolve(), new Promise(res => setTimeout(res, 800)) ]).then(() => { requestAnimationFrame(() => { document.documentElement.classList.add('hmk-ready'); }); });
     }
 
     bootEngine();
