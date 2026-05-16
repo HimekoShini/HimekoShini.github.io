@@ -161,7 +161,7 @@
   isToc: false,
   pageType: 'archive'
 }</script><style>
-  html { scroll-behavior: smooth; } /* 让所有附录和笔记跳跃都有平滑过度 */
+  html { scroll-behavior: smooth; } 
   
   @font-face {
       font-family: 'Huawen'; 
@@ -180,10 +180,10 @@
       --hmk-hover-title-color: #8A68B0; 
 
       /* --- 顶流大片区：首篇主推文章卡片参数 --- */
-      --hmk-hero-title-color: #ffffff;   /* 标题颜色 */
-      --hmk-hero-title-size: 3.5rem;       /* 横幅标题【正常字】字号 */
-      --hmk-hero-title-first-size: 2em;  /* 横幅标题【开头首字】特大倍率 */
-      --hmk-hero-title-first-offset: -6px;  /* 字底偏移修复修正值 */
+      --hmk-hero-title-color: #ffffff;   
+      --hmk-hero-title-size: 3.5rem;       
+      --hmk-hero-title-first-size: 2em;  
+      --hmk-hero-title-first-offset: -6px;  
       --hmk-hero-desc-color: #A6A095;    
       --hmk-hero-desc-size: 1.05rem;     
       --hmk-hero-quote-color: #8A68B0;   
@@ -205,32 +205,34 @@
       --hmk-article-line-height: 1.8;      
       --hmk-article-text-indent: 2em;      
       --hmk-code-text-size: 0.95rem;       
+      
+      /* == Midi 视界基座明亮色彩映射 == */
+      --hmk-midi-grid-line: #e0e2eb;
+      --hmk-midi-grid-alt: rgba(0, 0, 0, 0.035);
 
       /* 内部继承锁定，请勿动 */
       --theme-color: var(--hmk-theme-color) !important;
       --text-bg-hover: var(--hmk-theme-color) !important;
       
       /* 👨‍💻👩‍💻 👉 [可自定义]: 代码高级语法着色器 (白底 Vscode 柔和方案) 👨‍💻👩‍💻 */
-      --hmk-code-text-base: #333333;       /* 常规未经标黄或标注的基础代码底色 */
-      --hmk-code-keyword: #af00db;         /* [紫色] 保留字与逻辑触发词：if, then, const, return... */
-      --hmk-code-function: #795e26;        /* [褐色] 方法与函数名字调用：myFunction() */
-      --hmk-code-string: #a31515;          /* [暗红] 文本或字符输出：'Hello World' */
-      --hmk-code-number: #098658;          /* [墨绿] 全局一切的数字数值：123, 0.5 */
-      --hmk-code-comment: #008000;         /* [草绿] 注释与备注文字 */
-      --hmk-code-builtin: #0000ff;         /* [深蓝] 原生内置的全局指令：window, Math... */
-      --hmk-code-tag: #800000;             /* [深红] 专门属于 HTML 等标记语言的方括号 */
-      --hmk-code-attr: #ff0000;            /* [正红] 给属性名赋予特定的警告跳跃颜色：src=, href=... */
-      --hmk-code-punctuation: #666666;     /* [淡灰] 句号括号大括号及运算符 */
+      --hmk-code-text-base: #333333;       
+      --hmk-code-keyword: #af00db;         
+      --hmk-code-function: #795e26;        
+      --hmk-code-string: #a31515;          
+      --hmk-code-number: #098658;          
+      --hmk-code-comment: #008000;         
+      --hmk-code-builtin: #0000ff;         
+      --hmk-code-tag: #800000;             
+      --hmk-code-attr: #ff0000;            
+      --hmk-code-punctuation: #666666;     
   }
 
-  /* 👑 字体夺权法阵：渗透至最深处 */
   :root { --global-font: var(--hmk-font-family) !important; }
 
   body, #aside-content .card-info, #aside-content .card-info .author-info__name, #aside-content .card-info .author-info__description, #article-container p, #article-container h1, #article-container h2, #article-container h3, #article-container h4, #article-container h5, #article-container h6, #article-container li, #article-container span:not([class]), .post-title, .flink-list .flink-item-name, .flink-list .flink-item-desc { font-family: var(--hmk-font-family) !important; }
 
-  /* 📏 👉 精准注入字号控制法案 */
   #article-container p { font-size: var(--hmk-article-text-size) !important; line-height: var(--hmk-article-line-height) !important; text-indent: var(--hmk-article-text-indent) !important; }
-  #article-container p:empty { display: none !important; } /* 消灭所有魔法替换导致的空换行鬼影占位 */
+  #article-container p:empty { display: none !important; } 
   #article-container li, #article-container table { font-size: var(--hmk-article-text-size) !important; line-height: var(--hmk-article-line-height) !important; }
   #article-container code, #article-container pre, figure.highlight pre, figure.highlight .line, figure.highlight table *, .math.display *, .math.inline * { font-size: var(--hmk-code-text-size) !important; text-indent: 0 !important; }
 
@@ -243,10 +245,14 @@
       --hmk-grid-title-color: #ffffff !important;  
       --hmk-grid-desc-color: #bbbbbb !important;   
       --hmk-grid-meta-color: #888888 !important;   
+      
+      /* == Midi 视界基座暗色映射算法 == */
+      --hmk-midi-grid-line: #373e4d !important;
+      --hmk-midi-grid-alt: rgba(0, 0, 0, 0.2) !important;
+      
       --theme-color: var(--hmk-theme-color) !important;
       --text-bg-hover: var(--hmk-theme-color) !important;
       
-      /* 👨‍💻👩‍💻 👉 [可自定义]: 暗面下自动切换至最广受推崇的超绝唯美 One Dark Pro 黑夜方案 👨‍💻👩‍💻 */
       --hmk-code-text-base: #abb2bf !important;
       --hmk-code-keyword: #c678dd !important; 
       --hmk-code-function: #61afef !important; 
@@ -259,34 +265,25 @@
       --hmk-code-punctuation: #7F848E !important; 
   }
 
-  /* ------------------------------------------------------------- */
-  /* ✨ 极致维保计划: WIKI魔法拓展区排印法阵 (表/脚注/折叠框与UI重塑) ✨*/
-  /* ------------------------------------------------------------- */
-
-  /* 📚 奇观1号：悬浮毛玻璃双紫卡片阵列 - 极冰通透材质无阻隔降临！ */
   #article-container figure.highlight { border-radius: 12px !important; background: rgba(255, 255, 255, 0.55) !important; backdrop-filter: blur(25px) saturate(1.2) !important; -webkit-backdrop-filter: blur(25px) saturate(1.2) !important; border: 1px solid rgba(255, 255, 255, 0.6) !important; box-shadow: 4px 8px 20px rgba(0,0,0,0.06), inset 1px 1px 3px rgba(255,255,255,0.6) !important; overflow: hidden !important; margin: 1.8rem 0 !important; color: var(--hmk-code-text-base) !important; text-align: left !important; }
   #article-container figure.highlight .highlight-tools { background: linear-gradient(135deg, var(--hmk-theme-color) 0%, #8A68B0 100%) !important; color: #fff !important; opacity: 0.95 !important; border-bottom: none !important; font-family: var(--hmk-font-family) !important; font-weight: bold !important; text-shadow: 0 1px 3px rgba(0,0,0,0.2) !important;}
   #article-container figure.highlight .highlight-tools .code-lang { font-family: monospace !important; font-weight: 900 !important; }
   #article-container figure.highlight .highlight-tools i, #article-container figure.highlight .highlight-tools i.fas { color: #fff !important; }
   
-  /* 🗡️ 神级抹杀令加强版：重置表格细胞属性以绝对阻止“一缩一排”导致悬空！且防切分间距被过度拉扯！ */
   #article-container figure.highlight table { display: block !important; overflow-x: auto !important; margin: 0 !important; width: 100% !important; border-collapse: collapse !important;}
-  #article-container figure.highlight .gutter, #article-container figure.highlight .code, #article-container figure.highlight td, #article-container figure.highlight tr { background: transparent !important; background-color: transparent !important; border: none !important; box-shadow: none !important; text-align: left !important; vertical-align: top !important; /* 关键改动：必须是Top绝对顶天花板起排对齐！不能为Middle！ */ }
+  #article-container figure.highlight .gutter, #article-container figure.highlight .code, #article-container figure.highlight td, #article-container figure.highlight tr { background: transparent !important; background-color: transparent !important; border: none !important; box-shadow: none !important; text-align: left !important; vertical-align: top !important;  }
   #article-container figure.highlight .code *, #article-container figure.highlight .gutter * { background: transparent !important; background-color: transparent !important; }
   
-  /* 🔥 平衡修正引擎：为代码和数字增加相互平行的垂直对等推力，避免重压和边缘溢出 */
   #article-container figure.highlight pre { white-space: pre !important; word-wrap: normal !important; text-align: left !important; margin: 0 !important; overflow: visible !important;}
   #article-container figure.highlight .gutter pre { color: rgba(100,100,100, 0.4) !important; text-align: right !important; padding: 15px 15px 15px 18px !important; }
   #article-container figure.highlight .code pre { padding: 15px 18px 15px 5px !important; }
   
-  /* 完全抹杀原生自带、或本皮肤旧逻辑的各类恶心 hover 断层高光！强行锁死全透明！ */
   #article-container figure.highlight tbody tr:hover, #article-container figure.highlight .code:hover, #article-container figure.highlight .line:hover, #article-container figure.highlight pre:hover { background: transparent !important; background-color: transparent !important; }
 
   [data-theme='dark'] #article-container figure.highlight { background: rgba(30, 32, 38, 0.4) !important; border-color: rgba(255,255,255,0.1) !important; box-shadow: 5px 10px 20px rgba(0,0,0,0.25), inset 1px 1px 3px rgba(255,255,255,0.05) !important; }
   [data-theme='dark'] #article-container figure.highlight .highlight-tools { background: linear-gradient(135deg, #714EAC 0%, var(--hmk-theme-color) 100%) !important; }
   [data-theme='dark'] #article-container figure.highlight .gutter pre { color: rgba(255,255,255, 0.2) !important; }
   
-  /* == HMK 自制核心解析器接管渲染管线 (精准上色计划) == */
   #article-container figure.highlight .code pre { font-weight: bold; color: inherit !important; line-height: 1.6 !important;}
   #article-container figure.highlight .code pre span { color: inherit; } 
   #article-container figure.highlight .code pre span.keyword, #article-container figure.highlight .code pre span.selector-tag { color: var(--hmk-code-keyword) !important; font-weight: bold;}
@@ -299,7 +296,6 @@
   #article-container figure.highlight .code pre span.attr, #article-container figure.highlight .code pre span.attribute, #article-container figure.highlight .code pre span.variable { color: var(--hmk-code-attr) !important; }
   #article-container figure.highlight .code pre span.punctuation { color: var(--hmk-code-punctuation) !important; font-weight: normal !important;}
   
-  /* 📚 奇观2号：专属交互式原生折叠大卡片 (.hmk-fold 逻辑域) */
   details.hmk-fold { width: 100%; display: block; border-radius: 10px; background: rgba(255, 255, 255, 0.6) !important; backdrop-filter: blur(25px) saturate(1.2); -webkit-backdrop-filter: blur(25px) saturate(1.2); border: 1px solid rgba(255, 255, 255, 0.6); box-shadow: 0 5px 15px rgba(0,0,0,0.05), inset 1px 1px 3px rgba(255,255,255,0.6); overflow: hidden; margin: 2.2rem 0; transition: background 0.3s ease; }
   details.hmk-fold summary { padding: 14px 22px; font-weight: bold; color: #444; background: linear-gradient(to right, rgba(180, 166, 201, 0.25), transparent); list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; transition: all 0.3s; border-bottom: 1px solid transparent; outline: none; }
   details.hmk-fold summary::-webkit-details-marker { display: none; } 
@@ -312,7 +308,6 @@
   details.hmk-fold summary .hmk-fold-state::after { content: " ▼ 展开细览"; }
   details.hmk-fold[open] summary .hmk-fold-state::after { content: " ▲ 确认收起"; }
   .hmk-fold-content { padding: 20px 24px; color: var(--hmk-hero-desc-color); line-height: var(--hmk-article-line-height); }
-  /* 内层段落修复继承引擎！确保无论有几个通过回车触发出的段落都保持标准2em，完美处理文本间断 */
   .hmk-fold-content p { font-size: var(--hmk-article-text-size) !important; text-indent: var(--hmk-article-text-indent) !important; line-height: var(--hmk-article-line-height) !important; margin: 0 0 1rem 0;}
   .hmk-fold-content p:last-child { margin-bottom: 0 !important; }
   [data-theme='dark'] details.hmk-fold { background: rgba(30, 32, 38, 0.3) !important; border-color: rgba(255,255,255,0.08); box-shadow: 0 5px 20px rgba(0,0,0,0.3); }
@@ -321,7 +316,6 @@
   [data-theme='dark'] details.hmk-fold[open] summary { background: linear-gradient(to right, rgba(146, 108, 230, 0.25), rgba(30,32,38,0.2)); color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.5); border-bottom: 1px solid rgba(255,255,255,0.08);}
   [data-theme='dark'] details.hmk-fold[open] .hmk-fold-state { box-shadow: 0 2px 8px rgba(0,0,0,0.5); color:#fff !important;}
   
-  /* 📋 原本常规表格修饰层 */
   #article-container > table { width: 100% !important; margin: 2rem 0 !important; border-collapse: collapse !important; border-radius: 12px !important; overflow: hidden !important; box-shadow: 0 4px 15px rgba(0,0,0,0.05), inset 1px 1px 3px rgba(255,255,255,0.6) !important; background: rgba(255, 255, 255, 0.5) !important; backdrop-filter: blur(10px) !important; -webkit-backdrop-filter: blur(10px) !important; display: table !important; word-break: break-all !important; }
   #article-container > table thead { background: var(--hmk-theme-color) !important; color: #fff !important; text-shadow: 0px 1px 2px rgba(0,0,0,0.2) !important; }
   #article-container > table th, #article-container > table td { padding: 12px 18px !important; border-bottom: 1px solid rgba(0,0,0,0.06) !important; text-align: center !important; text-indent: 0 !important; vertical-align: middle !important; line-height: 1.5 !important; }
@@ -333,7 +327,6 @@
   [data-theme='dark'] #article-container > table tr:hover { background: rgba(255, 255, 255, 0.1) !important; }
   #article-container > table p { text-indent: 0 !important; margin: 0 !important; } 
 
-  /* 🔖 全新Wiki体系的超精美脚注悬浮与页脚解释箱修饰 */
   #article-container sup.hmk-note-mark { top: -0.5em !important; position: relative !important; font-size: 75% !important; line-height: 0 !important; vertical-align: baseline !important; scroll-margin-top: 100px; }
   #article-container sup.hmk-note-mark a { padding: 0 4px !important; margin: 0 2px !important; background: var(--hmk-theme-color) !important; color: #fff !important; border-radius: 3px !important; text-decoration: none !important; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important; opacity: 0.9 !important; font-weight: bold !important; font-family: var(--hmk-font-family) !important; }
   #article-container sup.hmk-note-mark a:hover { opacity: 1 !important; transform: scale(1.1) translateY(-2px) !important; box-shadow: 0 3px 8px rgba(0,0,0,0.15) !important; color:#fff !important; }
@@ -344,7 +337,6 @@
   [data-theme='dark'] .footnotes { background: rgba(30, 32, 38, 0.25) !important; border-top: 2px dashed rgba(255,255,255,0.1) !important; box-shadow: inset 1px 1px 5px rgba(255,255,255,0.05), 0 5px 15px rgba(0,0,0,0.2) !important;}
   [data-theme='dark'] #article-container sup.hmk-note-mark a:hover { box-shadow: 0 3px 10px rgba(146,108,230,0.4) !important;}
 
-  /* 🎭 极客黑幕、模糊屏障与超清拼音注引 */
   .hmk-heimu { background-color: #2b2b2b !important; color: #2b2b2b !important; border-radius: 4px !important; padding: 2px 5px !important; margin: 0 3px !important; transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1) !important; text-shadow: none !important; cursor: help !important; user-select: none !important; font-family: inherit !important;}
   .hmk-heimu:hover, .hmk-heimu:active { color: #ffffff !important; box-shadow: 0 3px 10px rgba(0,0,0,0.4) !important;}
   
@@ -358,33 +350,21 @@
   [data-theme='dark'] .hmk-heimu:hover, [data-theme='dark'] .hmk-heimu:active { color: #fff !important; box-shadow: 0 3px 10px rgba(0,0,0,0.7) !important;}
   [data-theme='dark'] .hmk-blur { text-shadow: 0 0 7px rgba(255,255,255,0.5) !important; }
 
-  /* 🪀 RPG 文字游戏动效基建引擎 */
-  /* 🐛 text-indent: 0 极为关键，成功避免单字继承父级段落缩进导致被拉出鸿沟 BUG */
   .hmk-text-float span, .hmk-text-shake span { display: inline-block; vertical-align: baseline; font-family: inherit; text-indent: 0 !important; }
-  @keyframes hmk-anim-float { 
-      0%, 100% { transform: translateY(0); } 
-      50% { transform: translateY(-4px); } 
-  }
-  @keyframes hmk-anim-shake { 
-      0%, 100% { transform: translate(0, 0) rotate(0deg); }
-      25% { transform: translate(-1px, 1px) rotate(-1deg); }
-      50% { transform: translate(1px, -1px) rotate(1deg); }
-      75% { transform: translate(-1px, -1px) rotate(0deg); }
-  }
+  @keyframes hmk-anim-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  @keyframes hmk-anim-shake { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 25% { transform: translate(-1px, 1px) rotate(-1deg); } 50% { transform: translate(1px, -1px) rotate(1deg); } 75% { transform: translate(-1px, -1px) rotate(0deg); } }
   .hmk-text-float span { animation: hmk-anim-float 2.5s ease-in-out infinite; }
   .hmk-text-shake span { animation: hmk-anim-shake 0.4s linear infinite; }
 
-  /* 👉 以下为原有的骨架安全矩阵，无需改动 */
   body { caret-color: transparent !important; }
   * { outline: none !important; }
   input, textarea { caret-color: var(--hmk-theme-color) !important; user-select: text !important; pointer-events: auto !important; }
   #article-container { user-select: text !important; caret-color: auto !important; }
   #article-container a { color: var(--hmk-theme-color) !important; transition: opacity 0.3s !important; }
   #article-container a:hover { opacity: 0.7 !important; text-decoration: underline !important; }
-
   #page-header #page-site-info { display: none !important; opacity: 0; pointer-events: none; }
-
   #search-button, #search-mask, .search-dialog { display: none !important; pointer-events: none !important; width: 0 !important; height: 0 !important; }
+  
   #hmk-search-core-wrapper { position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; z-index: 1000 !important; width: 170px; transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
   #hmk-search-core-wrapper:focus-within { width: 320px; }
   #hmk-search-core-wrapper:focus-within #hmk-true-input-bar { background: rgba(255, 255, 255, 0.55) !important; border-color: rgba(255,255,255,0.7) !important;}
@@ -396,6 +376,7 @@
   [data-theme='dark'] #hmk-search-core-wrapper:focus-within #hmk-true-input-bar { background: rgba(50, 52, 60, 0.8) !important; border-color: rgba(255,255,255,0.3) !important;}
   [data-theme='dark'] #hmk-true-input { color: #fff !important; }
   [data-theme='dark'] #hmk-true-input::placeholder { color: #aaa; }
+  
   #hmk-stealer-dropdown { position: absolute; top: calc(100% + 15px); left: 0; width: 100%; max-height: 50vh; overflow-y: auto; overflow-x: hidden; background: rgba(255, 255, 255, 0.8) !important; backdrop-filter: blur(25px) saturate(1.2) !important; -webkit-backdrop-filter: blur(25px) saturate(1.2) !important; border-radius: 12px !important; border: 1px solid rgba(255, 255, 255, 0.6) !important; box-shadow: 0 10px 40px rgba(0,0,0,0.1), inset 1px 1px 3px rgba(255,255,255,0.8) !important; padding: 10px 8px; z-index: 1001; opacity: 0; pointer-events: none; transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1); transform: translateY(-15px); }
   #hmk-stealer-dropdown.show-magic { opacity: 1; pointer-events: auto; transform: translateY(0); }
   #hmk-stealer-dropdown ul { list-style: none !important; margin: 0 !important; padding: 0 !important; }
@@ -428,6 +409,7 @@
   [data-theme='dark'] #post > .post-title.hmk-relocated { color: var(--hmk-hero-title-color) !important; text-shadow: 0px 4px 15px rgba(0,0,0,0.5) !important; }
   [data-theme='dark'] #post > #post-meta.hmk-relocated { border-top: 1px dashed rgba(255, 255, 255, 0.1) !important; }
   #page-header.post-bg #post-info { display: none !important; opacity: 0 !important; pointer-events: none !important;}
+  
   .flink-list > .flink-list-item { background: rgba(255, 255, 255, 0.55) !important;  backdrop-filter: blur(25px) saturate(1.2) !important; -webkit-backdrop-filter: blur(25px) saturate(1.2) !important; border-top: 1px solid rgba(255, 255, 255, 0.6) !important; border-left: 1px solid rgba(255, 255, 255, 0.6) !important; border-right: 1px solid rgba(0, 0, 0, 0.04) !important; border-bottom: 1px solid rgba(0, 0, 0, 0.04) !important; box-shadow: 4px 8px 20px rgba(0,0,0,0.05), inset 1px 1px 3px rgba(255,255,255,0.6), inset -2px -2px 8px rgba(0,0,0,0.03) !important; border-radius: 14px !important; text-decoration: none !important; transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease !important; }
   .flink-list > .flink-list-item:before { display: none !important; }
   .flink-list > .flink-list-item:hover { transform: translateY(-4px) !important; box-shadow: 6px 12px 25px rgba(0,0,0,0.08), inset 1px 1px 4px rgba(255,255,255,0.7), inset -3px -3px 10px rgba(0,0,0,0.04) !important; }
@@ -465,6 +447,7 @@
   #page-header #site-subtitle { margin-top: 15px !important; }
   @media screen and (max-width: 768px) { #page-header #site-info { bottom: 50px !important; left: 20px !important; } }
   #recent-posts { display: flex !important; flex-wrap: wrap !important; gap: 20px !important; font-family: var(--hmk-font-family); align-content: flex-start !important; align-items: flex-start !important; }
+  
   .hmk-card { display: flex !important; overflow: hidden !important; transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease !important; cursor: pointer; }
   #aside-content .card-info { transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease !important; display: block !important; padding: 1.5rem !important;}
   .hmk-card:hover, #aside-content .card-info:hover { transform: translateY(-4px) !important; box-shadow: 6px 12px 25px rgba(0,0,0,0.08), inset 1px 1px 4px rgba(255,255,255,0.7), inset -3px -3px 10px rgba(0,0,0,0.04) !important; }
@@ -496,8 +479,96 @@
   @media screen and (min-width: 2200px) { .hmk-grid-item { width: calc(25% - 15px) !important; aspect-ratio: 5 / 6 !important;} }
   @media screen and (max-width: 1200px) { .hmk-grid-item { width: calc(50% - 10px) !important; } }
   @media screen and (max-width: 900px) { .hmk-hero { flex-direction: column !important; aspect-ratio: auto !important; height: auto !important; } .hmk-hero-left { width: 100% !important; flex: 0 0 auto !important; height: 260px !important; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08);} .hmk-hero-right { width: 100% !important; flex: 0 0 auto !important; padding: 30px !important; } .hmk-grid-item { width: 100% !important; aspect-ratio: auto !important; height: auto !important; } .hmk-grid-left { height: 180px !important; } }
+
+  /* ============================================================= */
+  /* 🎹 极客魔法 DAW卷帘窗 : 控制列拓展！全局增益强压阵法支持！    */
+  /* ============================================================= */
+  .hmk-midi-app, .hmk-midi-app * { text-indent: 0 !important; margin: 0; padding: 0; box-sizing: border-box; } 
+  .hmk-midi-app { position: relative; width: 100%; margin: 2rem 0 !important; border: 1px solid #e1e3ea; border-radius: 8px; box-shadow: 0 5px 25px rgba(0,0,0,0.05); display: flex; flex-direction: column; font-family: 'Segoe UI', Tahoma, sans-serif; background: #ffffff; overflow: hidden; user-select: none; }
+  
+  .hmk-midi-topbar { display: flex; flex-direction: row; align-items: center; height: 46px; background: #fafafa; border-bottom: 1px solid #e1e3ea; padding: 0 10px; gap: 15px; }
+  
+  .hmk-mode-btn { background: #3b4252; color: #fff; border: none; border-radius: 4px; padding: 6px 12px; cursor: pointer; font-size: 0.8rem; font-weight: bold; flex-shrink: 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: background 0.2s;}
+  .hmk-mode-btn.mode-mix { background: var(--hmk-theme-color); }
+  .hmk-mode-btn:hover { filter: brightness(1.1); }
+  
+  .hmk-midi-tracks-wrapper { flex: 1; display: flex; flex-direction: row; gap: 8px; overflow-x: auto; overflow-y: hidden; white-space: nowrap; height: 100%; align-items: center;}
+  .hmk-midi-tracks-wrapper::-webkit-scrollbar { height: 4px; }
+  .hmk-midi-tracks-wrapper::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 4px; }
+
+  .hmk-midi-btn { background: transparent; color: #222; border: 1px solid #273240; border-radius: 3px; padding: 4px 10px; cursor: pointer; text-align: center; font-size: 0.8rem; font-family: 'Segoe UI', sans-serif; transition: all 0.2s; outline: none; line-height: 1.2; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; max-width: 140px; flex-shrink: 0;}
+  .hmk-midi-btn:hover { background: #f0f0f0; }
+  .hmk-midi-btn.active { background: #273240; color: #fff; border-color: #273240; font-weight: bold; }
+  .hmk-midi-btn:disabled { opacity: 0.5; cursor: not-allowed; border-color: #ccc; color: #888;}
+  
+  .hmk-midi-header { display: flex; height: 75px; border-bottom: 1px solid #e1e3ea; width: 100%; }
+  
+  .hmk-midi-h-left { width: 110px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: space-between; align-items: center; border-right: 1px solid #e1e3ea; background: #ffffff; padding: 4px 6px; }
+  
+  /* 拓展的纵列控制器 (增益推子入驻) */
+  .hmk-midi-bpm-wrap { font-size: 0.75rem; text-align: center; color: #444; width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 4px; margin-top: auto;}
+  .hmk-midi-vol-wrap { font-size: 0.75rem; text-align: center; color: #444; width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 4px; margin-bottom: 4px;}
+  .hmk-midi-bpm-wrap input[type=range], .hmk-midi-vol-wrap input[type=range] { width: 55px; cursor: pointer; display: block; margin: 0;}
+  .hmk-midi-vol-wrap i { color: var(--hmk-theme-color); font-size: 0.9rem;}
+  
+  .hmk-play-btn { background: var(--hmk-theme-color); color: #fff; border: none; border-radius: 3px; padding: 4px 0; width: 100%; cursor: pointer; font-size: 0.9rem; font-weight: bold; transition: opacity 0.2s; flex-shrink: 0; box-shadow: 0 2px 4px rgba(0,0,0,0.15);}
+  .hmk-play-btn:hover { opacity: 0.8; }
+  .hmk-play-btn:disabled { background: #ccc; cursor: not-allowed; color: #fff; box-shadow: none;}
+  .hmk-play-btn.active { background: #ff4757; }
+
+  .hmk-midi-h-right { flex: 1; display: flex; align-items: flex-end; overflow-x: hidden; background: #fafafa; }
+  .hmk-midi-ruler { display: flex; height: 20px; font-size: 0.7rem; color: #666; font-weight: bold; align-items: flex-end;}
+  .hmk-midi-ruler span { display: inline-block; text-align: left; padding-left: 5px; border-left: 1px solid var(--hmk-midi-grid-line); padding-bottom: 2px; flex-shrink: 0; box-sizing: border-box; }
+  
+  /* 视口高固定裁切，八度卷动无压迫 */
+  .hmk-midi-scroll-agent { display: flex; height: 312px; width: 100%; position: relative; overflow: hidden; background: #ffffff; }
+  
+  .hmk-midi-b-keys { width: 110px; flex-shrink: 0; background: #fff; z-index: 10; border-right: 1px solid #e1e3ea; box-shadow: 2px 0 5px rgba(0,0,0,0.03); overflow-y: scroll; overflow-x: hidden; -ms-overflow-style: none; scrollbar-width: none; }
+  .hmk-midi-b-keys::-webkit-scrollbar { display: none; }
+  .hmk-keys-inner { display: flex; flex-direction: column; width: 100%; }
+  
+  .hmk-key-item { height: 26px; line-height: 26px; width: 100%; text-align: center; font-size: 0.75rem; font-weight: bold; cursor: pointer; border-left: 6px solid transparent; transition: background 0.1s; flex-shrink: 0;}
+  .hmk-key-item:active, .hmk-key-item.pressed { border-left-color: var(--hmk-theme-color); opacity: 0.85; }
+  .hmk-key-w { background: #ffffff; color: #222; border-bottom: 1px solid #eaeaea; }
+  .hmk-key-b { background: #273240; color: #ffffff; border-bottom: 1px solid #1a222c;}
+  
+  .hmk-midi-b-grid { flex: 1; overflow: auto; position: relative; }
+  .hmk-midi-b-grid::-webkit-scrollbar { height: 8px; width: 8px;}
+  .hmk-midi-b-grid::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 4px;}
+  
+  .hmk-midi-canvas { position: relative; width: max-content; min-width: 100%; } 
+  
+  .hmk-midi-note { position: absolute; height: 26px; background: #Beb3ce; border: 1px solid rgba(255,255,255,0.4); border-radius: 3px; transition: background 0.05s ease;}
+  .hmk-midi-note.playing { background: var(--hmk-theme-color); border-color: #ffffff; box-shadow: 0 0 8px var(--hmk-theme-color); z-index: 5;}
+  
+  /* 红线下端对齐由于 Header长高所以拉长 */
+  .hmk-playhead { position: absolute; left: 0; top: -75px; width: 2px; height: calc(100% + 75px); background: #ff4757; z-index: 20; box-shadow: 0 0 5px rgba(255, 71, 87, 0.5); pointer-events: none; transition: none; display: none; }
+  .hmk-playhead-cap { position: absolute; top: 70px; left: -4px; width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 8px solid #ff4757; }
+
+  /* 夜间赛博暗影皮肤适配 */
+  [data-theme='dark'] .hmk-midi-app { border-color: #3b4252; background: #282c34; box-shadow: 0 5px 30px rgba(0,0,0,0.5); }
+  [data-theme='dark'] .hmk-midi-topbar { background: #282c34; border-color: #3b4252; }
+  [data-theme='dark'] .hmk-mode-btn { background: #4c566a; }
+  [data-theme='dark'] .hmk-mode-btn.mode-mix { background: #81a1c1; color: #1e222a; }
+  [data-theme='dark'] .hmk-midi-header { border-color: #3b4252; }
+  [data-theme='dark'] .hmk-midi-h-left { background: #282c34; border-color: #3b4252; }
+  [data-theme='dark'] .hmk-midi-b-keys { background: #282c34; border-color: #3b4252; box-shadow: 2px 0 8px rgba(0,0,0,0.2);}
+  [data-theme='dark'] .hmk-midi-scroll-agent { background: transparent; }
+  [data-theme='dark'] .hmk-midi-h-right { background: #1e222a; }
+  [data-theme='dark'] .hmk-midi-btn { border-color: #81a1c1; color: #d8dee9; }
+  [data-theme='dark'] .hmk-midi-btn:hover { background: #3b4252; }
+  [data-theme='dark'] .hmk-midi-btn.active { background: #81a1c1; color: #1e222a; border-color:#81a1c1;}
+  [data-theme='dark'] .hmk-midi-bpm-wrap, [data-theme='dark'] .hmk-midi-vol-wrap { color: #d8dee9; }
+  [data-theme='dark'] .hmk-play-btn:disabled { background: #4c566a; color: #eceff4;}
+  [data-theme='dark'] .hmk-key-w { background: #3b4252; color: #eceff4; border-color: #434c5e; }
+  [data-theme='dark'] .hmk-key-b { border-color: #1a1e24; }
+  [data-theme='dark'] .hmk-midi-ruler { color: #8892b0; }
+  [data-theme='dark'] .hmk-midi-ruler span { border-color: #3b4252; }
+  [data-theme='dark'] .hmk-midi-note { background: #5e81ac; border-color: rgba(255,255,255,0.1); }
+  [data-theme='dark'] .hmk-midi-note.playing { background: var(--hmk-theme-color); }
+  [data-theme='dark'] .hmk-midi-b-grid::-webkit-scrollbar-thumb { border-color: #282c34; }
 </style>
-<meta name="generator" content="Hexo 8.1.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-box-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">姬向审维 HimekoShini 的手记</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-box-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title">2025</h1></div></header><main class="layout" id="content-inner"><div id="archive"><div class="article-sort-title">全部文章 - 3</div><div class="article-sort"><div class="article-sort-item year">2025</div><div class="article-sort-item"><a class="article-sort-item-img" href="/2025/12/07/%E7%A1%AB%E7%A3%BA%E7%81%AB%E7%84%B0%C2%B7%E7%BB%81%E6%98%9F%E7%81%AF/" title="硫磺火焰·绁星灯"><img src="/img/Brimstone_Akari.png" alt="硫磺火焰·绁星灯" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2025-12-06T16:00:00.000Z" title="发表于 2025-12-07 00:00:00">2025-12-07</time></div><a class="article-sort-item-title" href="/2025/12/07/%E7%A1%AB%E7%A3%BA%E7%81%AB%E7%84%B0%C2%B7%E7%BB%81%E6%98%9F%E7%81%AF/" title="硫磺火焰·绁星灯">硫磺火焰·绁星灯</a></div></div><div class="article-sort-item no-article-cover"><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2025-11-23T10:00:00.000Z" title="发表于 2025-11-23 18:00:00">2025-11-23</time></div><a class="article-sort-item-title" href="/2025/11/23/%E6%97%A9%E6%99%A8/" title="早晨">早晨</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/2025/11/11/%E5%9C%A3%E8%AF%9E%E6%A3%8D%E5%A6%B9/" title="圣诞棍妹"><img src="/img/Santa_Otto.png" alt="圣诞棍妹" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2025-11-10T16:00:00.000Z" title="发表于 2025-11-11 00:00:00">2025-11-11</time></div><a class="article-sort-item-title" href="/2025/11/11/%E5%9C%A3%E8%AF%9E%E6%A3%8D%E5%A6%B9/" title="圣诞棍妹">圣诞棍妹</a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">HimekoShini</div><div class="author-info-description">“样样通，样样松”</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/HimekoShini"><i class="fab fa-github"></i><span>Go to Github Page</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/HimekoShini" target="_blank" title="Github主页"><i class="fab fa-github"></i></a></div></div><div class="sticky_layout"></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2026 By HimekoShini</span></div><div class="footer_custom_text">基于 Hexo 与 Butterfly，由 Gemini 3.1 pro preview 协助开发</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"></div><script>
+<meta name="generator" content="Hexo 8.1.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-box-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">姬向审维 HimekoShini 的手记</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-box-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title">2025</h1></div></header><main class="layout" id="content-inner"><div id="archive"><div class="article-sort-title">全部文章 - 3</div><div class="article-sort"><div class="article-sort-item year">2025</div><div class="article-sort-item"><a class="article-sort-item-img" href="/2025/12/07/%E7%A1%AB%E7%A3%BA%E7%81%AB%E7%84%B0%C2%B7%E7%BB%81%E6%98%9F%E7%81%AF/" title="硫磺火焰·绁星灯"><img src="/img/Brimstone_Akari.png" alt="硫磺火焰·绁星灯" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2025-12-06T16:00:00.000Z" title="发表于 2025-12-07 00:00:00">2025-12-07</time></div><a class="article-sort-item-title" href="/2025/12/07/%E7%A1%AB%E7%A3%BA%E7%81%AB%E7%84%B0%C2%B7%E7%BB%81%E6%98%9F%E7%81%AF/" title="硫磺火焰·绁星灯">硫磺火焰·绁星灯</a></div></div><div class="article-sort-item no-article-cover"><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2025-11-23T10:00:00.000Z" title="发表于 2025-11-23 18:00:00">2025-11-23</time></div><a class="article-sort-item-title" href="/2025/11/23/%E6%97%A9%E6%99%A8/" title="早晨">早晨</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/2025/11/11/%E5%9C%A3%E8%AF%9E%E6%A3%8D%E5%A6%B9/" title="圣诞棍妹"><img src="/img/Santa_Otto.png" alt="圣诞棍妹" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2025-11-10T16:00:00.000Z" title="发表于 2025-11-11 00:00:00">2025-11-11</time></div><a class="article-sort-item-title" href="/2025/11/11/%E5%9C%A3%E8%AF%9E%E6%A3%8D%E5%A6%B9/" title="圣诞棍妹">圣诞棍妹</a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">HimekoShini</div><div class="author-info-description">“样样通，样样松”</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/HimekoShini"><i class="fab fa-github"></i><span>Go to Github Page</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/HimekoShini" target="_blank" title="Github主页"><i class="fab fa-github"></i></a></div></div><div class="sticky_layout"></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2026 By HimekoShini</span></div><div class="footer_custom_text">基于 Hexo 与 Butterfly，由 Gemini 3.1 pro preview 协助开发</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"></div><script>
   (function(){
     if (!document.getElementById('hmk-glass-stage')) {
         const bgStage = document.createElement('div');
@@ -571,29 +642,10 @@
         }
     }
 
-    const textPool = [
-        "「可是她们的话分不清真假」—— 赵雷《朵》",
-        "「只有那明月，知道过程壮烈」—— 许一鸣《一等情事》",
-        "「Perfume came naturally from Paris, naturally」—— Queen《Killer Queen》",
-        "「Bye bye baby blue」—— Glass Animal《The Other Side Of Paradise》",
-        "「この心がずっと自由なまま」—— eufonius《比翼の羽根》",
-        "「でもきっと君がいたら変わる？」—— 大槻ケンヂ《人として軸がぶれている》",
-        "「I feel numb, I feel burning with haste」—— Jack Stauber《Baby Hotline》",
-        "「この世界の哀しみを抱えたふりして、どこか寂しくて」—— Kyiku《かなしい、かなしい、てのひら。》",
-        "「雷鳴」—— r-906《まにまに》",
-        "「そのどれもが全部、同じ人」—— ピノキオピー《すろぉもぉしょん》",
-        "「そんなあなたを、春風が攫ってく」—— 倚水《春を待つ》",
-        "「感情を殺させないで」—— ヒバナ《フローリア》",
-        "「青春は、日々の中夢の中」—— なるみや《乙女的ストーキング》",
-        "「会えたらな、会いたいな」—— 澤田空海理《us》",
-        "「風の筆、射す、春日花抄」—— はな《櫻ノ詩》",
-        "「Though you have left」—— mili《world.execute (me) ;》"
-    ];
-    
+    const textPool = [ "「可是她们的话分不清真假」—— 赵雷《朵》", "「只有那明月，知道过程壮烈」—— 许一鸣《一等情事》", "「Perfume came naturally from Paris, naturally」—— Queen《Killer Queen》", "「Bye bye baby blue」—— Glass Animal《The Other Side Of Paradise》", "「この心がずっと自由なまま」—— eufonius《比翼の羽根》", "「でもきっと君がいたら変わる？」—— 大槻ケンヂ《人として軸がぶれている》", "「I feel numb, I feel burning with haste」—— Jack Stauber《Baby Hotline》", "「この世界の哀しみを抱えたふりして、どこか寂しくて」—— Kyiku《かなしい、かなしい、てのひら。》", "「雷鳴」—— r-906《まにまに》", "「そのどれもが全部、同じ人」—— ピノキオピー《すろぉもぉしょん》", "「そんなあなたを、春風が攫ってく」—— 倚水《春を待つ》", "「感情を殺させないで」—— ヒバナ《フローリア》", "「青春は、日々の中夢の中」—— なるみや《乙女的ストーキング》", "「会えたらな、会いたいな」—— 澤田空海理《us》", "「風の筆、射す、春日花抄」—— はな《櫻ノ詩》", "「Though you have left」—— mili《world.execute (me) ;》"];
     const imgPool = [ "/img/Brimstone_Akari.png", "/img/Alice.jpg", "/img/Another.png", "/img/Regent.png", "/img/Santa_Otto.png" ];
     const defaultImgs = [ "/img/Default_Cover.png" ];
 
-    /* --- 🔮 核心增量法术1号：神级绝护层代码高亮（零DOM破坏，安全漫步级引擎） --- */
     function buildCodeHighlight() {
         document.querySelectorAll('#article-container figure.highlight').forEach(block => {
             let classStr = block.className.toLowerCase();
@@ -602,27 +654,23 @@
             let langText = langSpan ? langSpan.textContent.toLowerCase() : '';
 
             if (classStr.includes('gdscript') || classStr.includes('plain') || attrLang.includes('gdscript') || attrLang.includes('plain') || langText.includes('gdscript') || langText.includes('plain')) {
-                
                 if (langSpan) langSpan.textContent = 'GDSCRIPT';
                 
                 let codeContainer = block.querySelector('.code pre');
                 if(!codeContainer || codeContainer.hasAttribute('data-gd-fix')) return;
                 codeContainer.setAttribute('data-gd-fix', '1');
                 
-                /* 🛸 真·魔法：启动文本穿梭幽灵引擎，绕开全部错置换行<br>及所有未知深坑DOM表皮 */
                 let walker = document.createTreeWalker(codeContainer, NodeFilter.SHOW_TEXT, null, false);
-                let textNodes = [];
-                let n;
+                let textNodes = []; let n;
                 while (n = walker.nextNode()) textNodes.push(n);
                 
                 textNodes.forEach(node => {
                     let rawText = node.nodeValue;
-                    if(!rawText || !rawText.trim()) return; /* 如果只是占位的空行、回车空格文本直接放过！从而保持完美垂直阵列 */
+                    if(!rawText || !rawText.trim()) return; 
 
                     let tempStore = [];
                     let pushStr = val => { tempStore.push(val); return `__GDMK_${tempStore.length-1}__`; };
                     
-                    /* 为免转义导致的安全问题预防护甲 */
                     let lineText = rawText.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
                     
                     lineText = lineText.replace(/&quot;.*?&quot;|&#39;.*?&#39;|".*?"|'.*?'/g, match => pushStr(`<span class="string">${match}</span>`));
@@ -635,10 +683,7 @@
                     
                     if(tempStore.length > 0) {
                         lineText = lineText.replace(/__GDMK_(\d+)__/g, (match, idx) => tempStore[idx]);
-                        let wrapper = document.createElement('span');
-                        wrapper.innerHTML = lineText;
-                        
-                        /* 神仙碎片置换手术：原地换骨而绝不改乱原来的任何父节点层级！所以绝不崩塌合并 */
+                        let wrapper = document.createElement('span'); wrapper.innerHTML = lineText;
                         let frag = document.createDocumentFragment();
                         while(wrapper.firstChild) frag.appendChild(wrapper.firstChild);
                         node.parentNode.replaceChild(frag, node);
@@ -648,13 +693,24 @@
         });
     }
 
-    /* --- 🔮 核心增量法术2号：WIKI排版防御隔离墙 与 原生折叠引擎 --- */
     function parseWikiSyntax() {
         const container = document.getElementById('article-container');
         if(!container || container.hasAttribute('data-wiki-parsed')) return;
         container.setAttribute('data-wiki-parsed', '1');
 
         let containerHtml = container.innerHTML;
+        
+        if (containerHtml.includes('{=midi|')) {
+            let preBlocks_m = [];
+            containerHtml = containerHtml.replace(/<(pre|code|figure)[\s\S]*?<\/\1>/gi, match => { preBlocks_m.push(match); return `___HMK_SAFE_BLOCK_M_${preBlocks_m.length-1}___`; });
+            
+            containerHtml = containerHtml.replace(/<p>\s*\{=midi\|(.*?)=\}\s*<\/p>|\{=midi\|(.*?)=\}/g, (match, p1, p2) => {
+                const tgt = (p1 || p2 || "").trim();
+                return `</p><div class="hmk-midi-mount" data-midi-url="${tgt}"></div><p>`;
+            });
+            containerHtml = containerHtml.replace(/___HMK_SAFE_BLOCK_M_(\d+)___/g, (match, i) => preBlocks_m[i]);
+        }
+
         if (containerHtml.includes('{=fold|')) {
             let preBlocks = [];
             containerHtml = containerHtml.replace(/<(pre|code|figure)[\s\S]*?<\/\1>/gi, match => { preBlocks.push(match); return `___HMK_SAFE_BLOCK_${preBlocks.length-1}___`; });
@@ -664,21 +720,19 @@
                 foldChanged = true;
                 return `</p><details class="hmk-fold"><summary><span class="hmk-fold-title">${title}</span><span class="hmk-fold-state"></span></summary><div class="hmk-fold-content"><p>${txt}</p></div></details><p>`;
             });
-
             if (foldChanged) {
                 containerHtml = containerHtml.replace(/___HMK_SAFE_BLOCK_(\d+)___/g, (match, i) => preBlocks[i]);
-                container.innerHTML = containerHtml;
             }
         }
+
+        container.innerHTML = containerHtml;
 
         let footnoteList = [];
         const targetBlocks = container.querySelectorAll('p, li, td, th, h1, h2, h3, h4, h5, h6');
         const inlineRegex = /\{=(color|黑幕|模糊|ruby|note|float|shake)\|([\s\S]*?)=\}/g;
 
         targetBlocks.forEach(block => {
-            /* 🛡️ 究极隔离网：一切身处于代码框内、具有工具栏属性、或者身处于旁侧小标记的行号标签结构等区域内的字词，绝不碰触其分毫！杜绝误伤导致压缩代码间距！ */
             if (!document.body.contains(block) || block.closest('figure.highlight, figure, pre, code, .code, .gutter, .highlight-tools')) return;
-
             let html = block.innerHTML;
             if (html.includes('{=')) {
                 let changed = false;
@@ -687,8 +741,7 @@
                     if (cmd === 'color') {
                         let firstPipe = content.indexOf('|');
                         if (firstPipe === -1) return match;
-                        let c = content.substring(0, firstPipe);
-                        let txt = content.substring(firstPipe + 1);
+                        let c = content.substring(0, firstPipe); let txt = content.substring(firstPipe + 1);
                         return `<span style="color:${c}">${txt}</span>`;
                     } else if (cmd === '黑幕') {
                         let firstPipe = content.indexOf('|');
@@ -699,35 +752,26 @@
                     else if (cmd === 'ruby') {
                         let firstPipe = content.indexOf('|');
                         if (firstPipe === -1) return match;
-                        let base = content.substring(0, firstPipe);
-                        let top = content.substring(firstPipe + 1);
+                        let base = content.substring(0, firstPipe); let top = content.substring(firstPipe + 1);
                         return `<ruby>${base}<rp>(</rp><rt>${top}</rt><rp>)</rp></ruby>`;
                     } else if (cmd === 'note') {
-                        let fIdx = footnoteList.length + 1;
-                        footnoteList.push(content);
+                        let fIdx = footnoteList.length + 1; footnoteList.push(content);
                         return `<sup class="hmk-note-mark" id="hmk-fnref-${fIdx}"><a href="#hmk-fn-${fIdx}">${fIdx}</a></sup>`;
                     } else if (cmd === 'float' || cmd === 'shake') {
-                        let tempDiv = document.createElement('div');
-                        tempDiv.innerHTML = content;
-                        let charCounter = { val: 0 };
+                        let tempDiv = document.createElement('div'); tempDiv.innerHTML = content; let charCounter = { val: 0 };
                         let wrapNode = function(node) {
                             if (node.nodeType === 3) {
                                 let frag = document.createDocumentFragment();
                                 for (let char of node.nodeValue) {
-                                    if (char.trim() === '') {
-                                        frag.appendChild(document.createTextNode(char));
-                                    } else {
-                                        let s = document.createElement('span');
-                                        s.textContent = char;
+                                    if (char.trim() === '') { frag.appendChild(document.createTextNode(char)); } 
+                                    else {
+                                        let s = document.createElement('span'); s.textContent = char;
                                         s.style.animationDelay = cmd === 'float' ? `${charCounter.val * 0.1}s` : `${Math.random() * 0.5}s`;
-                                        frag.appendChild(s);
-                                        charCounter.val++;
+                                        frag.appendChild(s); charCounter.val++;
                                     }
                                 }
                                 node.parentNode.replaceChild(frag, node);
-                            } else if (node.nodeType === 1) {
-                                Array.from(node.childNodes).forEach(wrapNode);
-                            }
+                            } else if (node.nodeType === 1) { Array.from(node.childNodes).forEach(wrapNode); }
                         };
                         Array.from(tempDiv.childNodes).forEach(wrapNode);
                         return `<span class="hmk-text-${cmd}">${tempDiv.innerHTML}</span>`;
@@ -739,19 +783,379 @@
         });
 
         if (footnoteList.length > 0) {
-            let fnDiv = document.createElement('div');
-            fnDiv.className = 'footnotes';
-            let ol = document.createElement('ol');
-            ol.style.cssText = "margin: 0; padding-left: 20px;";
+            let fnDiv = document.createElement('div'); fnDiv.className = 'footnotes';
+            let ol = document.createElement('ol'); ol.style.cssText = "margin: 0; padding-left: 20px;";
             footnoteList.forEach((text, i) => {
-                let id = i + 1;
-                let li = document.createElement('li');
-                li.id = `hmk-fn-${id}`; li.className = "footnote-item";
+                let id = i + 1; let li = document.createElement('li'); li.id = `hmk-fn-${id}`; li.className = "footnote-item";
                 li.innerHTML = `<span>${text}</span> <a href="#hmk-fnref-${id}" style="color:var(--hmk-theme-color); font-weight:bold; padding-left: 8px; text-decoration:none;" title="回到刚刚看的地方">↩</a>`;
                 ol.appendChild(li);
             });
-            fnDiv.appendChild(ol);
-            container.appendChild(fnDiv);
+            fnDiv.appendChild(ol); container.appendChild(fnDiv);
+        }
+    }
+
+    /* --- 🔮 完整的UI骨架系统：容纳轨、调参滑块和视距限定框 --- */
+    function initMidiPlayerUI() {
+        const mounts = document.querySelectorAll('.hmk-midi-mount');
+        if (mounts.length === 0) return;
+        
+        /* 精确列布75键完整琴区。涵盖常见和声最低/最高界限。 */
+        const octBase = ["B","Bb","A","Ab","G","Gb","F","E","Eb","D","Db","C"];
+        const noteNames = ["C8"];
+        for (let oct = 7; oct >= 2; oct--) { octBase.forEach(n => noteNames.push(n + oct)); }
+        
+        mounts.forEach(mount => {
+            if (mount.hasAttribute('data-ui-built')) return;
+            mount.setAttribute('data-ui-built', '1');
+            const midiUrl = mount.getAttribute('data-midi-url');
+
+            const appBox = document.createElement('div'); appBox.className = 'hmk-midi-app';
+            
+            // ======【模式选择 & 动态多轨水平铺设列】======
+            const topBar = document.createElement('div'); topBar.className = 'hmk-midi-topbar';
+            const btnMode = document.createElement('button'); btnMode.className = 'hmk-mode-btn'; btnMode.innerText = 'MODE: SOLO';
+            const tracksWrap = document.createElement('div'); tracksWrap.className = 'hmk-midi-tracks-wrapper';
+            const btnHold = document.createElement('button'); btnHold.className = 'hmk-midi-btn'; btnHold.innerText = 'LOADING ASSETS'; btnHold.disabled = true;
+            tracksWrap.appendChild(btnHold);
+            topBar.appendChild(btnMode); topBar.appendChild(tracksWrap);
+            
+            // ======【参数滑块总控】======
+            const topHeader = document.createElement('div'); topHeader.className = 'hmk-midi-header';
+            const headerL = document.createElement('div'); headerL.className = 'hmk-midi-h-left';
+            
+            const volBox = document.createElement('div'); volBox.className = 'hmk-midi-vol-wrap';
+            volBox.innerHTML = `<i class="fas fa-volume-up"></i><input type="range" class="h-vol-s" min="-12" max="15" value="4" disabled>`;
+            
+            const bpmBox = document.createElement('div'); bpmBox.className = 'hmk-midi-bpm-wrap';
+            bpmBox.innerHTML = `BPM<input type="range" class="h-bpm-s" min="40" max="240" value="120" disabled>`;
+            
+            const btnPlay = document.createElement('button'); btnPlay.className = 'hmk-play-btn'; btnPlay.innerText = 'WAITING'; btnPlay.disabled = true;
+            headerL.append(volBox, bpmBox, btnPlay);
+            
+            const headerR = document.createElement('div'); headerR.className = 'hmk-midi-h-right';
+            const ruler = document.createElement('div'); ruler.className = 'hmk-midi-ruler'; 
+            for(let i=1; i<=15; i++) { const sc = document.createElement('span'); sc.innerText = i; sc.style.width = '160px'; ruler.appendChild(sc); }
+            headerR.appendChild(ruler);
+            topHeader.appendChild(headerL); topHeader.appendChild(headerR);
+            
+            // ======【音区视口裁切 & 渲染画布群】======
+            const AgentScroll = document.createElement('div'); AgentScroll.className = 'hmk-midi-scroll-agent';
+            
+            const keysBox = document.createElement('div'); keysBox.className = 'hmk-midi-b-keys';
+            const keysInner = document.createElement('div'); keysInner.className = 'hmk-keys-inner';
+            noteNames.forEach(n => { 
+                const keyDiv = document.createElement('div'); 
+                keyDiv.className = n.includes('b') ? 'hmk-key-item hmk-key-b' : 'hmk-key-item hmk-key-w'; 
+                keyDiv.innerText = n; 
+                keysInner.appendChild(keyDiv); 
+            });
+            keysBox.appendChild(keysInner);
+
+            const gridWrap = document.createElement('div'); gridWrap.className = 'hmk-midi-b-grid';
+            const canvasCon = document.createElement('div'); canvasCon.className = 'hmk-midi-canvas';
+            const absoluteH = noteNames.length * 26; canvasCon.style.height = absoluteH + 'px';
+            
+            const playhead = document.createElement('div'); playhead.className = 'hmk-playhead';
+            const playheadCap = document.createElement('div'); playheadCap.className = 'hmk-playhead-cap'; playhead.appendChild(playheadCap);
+            
+            canvasCon.appendChild(playhead);
+            gridWrap.appendChild(canvasCon);
+            AgentScroll.appendChild(keysBox); AgentScroll.appendChild(gridWrap);
+
+            appBox.appendChild(topBar); appBox.appendChild(topHeader); appBox.appendChild(AgentScroll);
+            mount.appendChild(appBox);
+            
+            // 同向联合滑动，Y位对琴轴无错差，X轨随进度同退！
+            gridWrap.addEventListener('scroll', () => { 
+                headerR.scrollLeft = gridWrap.scrollLeft; 
+                keysBox.scrollTop = gridWrap.scrollTop;
+            });
+
+            // 开始抓包真正的混音计算
+            loadSynthesizerAndBind(midiUrl, tracksWrap, btnMode, volBox, bpmBox, btnPlay, ruler, canvasCon, playhead, keysInner, noteNames, gridWrap);
+        });
+    }
+
+    // == 高能音频计算/增益总线/防暴节点与图阵重列合辑 ==
+    function loadSynthesizerAndBind(midiUrl, tracksWrap, btnMode, volB, bpmB, btnPlay, ruler, canvasCon, playhead, keysInner, noteNames, gridWrap) {
+        const bpmVal = bpmB.querySelector('.h-bpm-v');
+        const bpmSlider = bpmB.querySelector('.h-bpm-s');
+        const volSlider = volB.querySelector('.h-vol-s');
+        
+        const startBinding = () => {
+            btnPlay.innerText = 'READING...';
+            fetch(midiUrl).then(res => {
+                if (!res.ok) throw new Error("外部音乐加载无权限或未打通");
+                return res.arrayBuffer();
+            }).then(buffer => {
+                const midiObj = new window.Midi(buffer);
+                const bTicks = midiObj.header.ppq || 480; 
+                
+                let fBpm = 120;
+                if(midiObj.header.tempos.length > 0) fBpm = Math.round(midiObj.header.tempos[0].bpm);
+                bpmSlider.value = fBpm; bpmSlider.disabled = false;
+                
+                let tsNum = 4; let tsDen = 4;
+                if(midiObj.header.timeSignatures.length > 0) {
+                    tsNum = midiObj.header.timeSignatures[0].timeSignature[0];
+                    tsDen = midiObj.header.timeSignatures[0].timeSignature[1];
+                }
+                
+                // 我们把时间具像化，以一拍占用40像素计，算出整小节尺寸用来打底层格
+                const pxPerBeat = 40; 
+                const tickToPx = pxPerBeat / bTicks; 
+                const measureWidthPx = tsNum * (4 / tsDen) * pxPerBeat; 
+
+                const validTracks = midiObj.tracks.filter(tr => tr.notes.length > 0);
+                if(validTracks.length === 0) throw new Error("音源谱纯空。");
+
+                let isPlaying = false; 
+                let loopAnim = null;
+                
+                // == 全局压限与总增益大本营！Tone.Limiter => Destination == 
+                if(!window.hmkMasterBusBuilt) {
+                    window.hmkMasterBusBuilt = true;
+                    // 终极音量放大节点，负责暴戾增效
+                    window.hmkMasterVolume = new window.Tone.Volume(4).toDestination();
+                    // 音量天花板压榨器！无论多炸哪怕破0分贝，在这里被按住柔性挤压输出到Volume发声。彻底避免撕裂噼啪声。
+                    window.hmkMasterLimiter = new window.Tone.Limiter(-0.5).connect(window.hmkMasterVolume);
+                }
+
+                // 连接 UI 和实际系统级增益器
+                volSlider.disabled = false;
+                volSlider.oninput = (e) => {
+                   if(window.hmkMasterVolume) window.hmkMasterVolume.volume.value = Number(e.target.value);
+                }
+                // 上膛当前滑动位置同步至物理音箱
+                window.hmkMasterVolume.volume.value = Number(volSlider.value);
+                
+                let sysActiveSynths = {};
+                // 复用或者创建全新专属轨琴机。赋予更高阶的电子声波让声音雄厚而空灵。
+                function getSynthByTrack(tr) {
+                   if (!sysActiveSynths[tr.id || tr.name]) {
+                       let isDrum = tr.instrument.percussion || (tr.name || "").toLowerCase().includes("drum");
+                       if(isDrum) {
+                           sysActiveSynths[tr.id || tr.name] = new window.Tone.PolySynth(window.Tone.MembraneSynth, { 
+                               volume: -4, 
+                               envelope: { attack: 0.005, decay: 0.2, sustain: 0, release: 0.2 } 
+                           }).connect(window.hmkMasterLimiter);
+                       } else {
+                           // 【超高解析振荡阵法】：替换廉价sine，使用带模拟味的正弦波调制宽三角。保留广阔包络释放时长(release)。
+                           sysActiveSynths[tr.id || tr.name] = new window.Tone.PolySynth(window.Tone.Synth, { 
+                               oscillator: { type: "amtriangle", harmonicity: 0.5, modulationType: "sine" },
+                               envelope: { attack: 0.015, decay: 0.3, sustain: 0.3, release: 1.5 },
+                               volume: -10  // 给10和弦或者8首MIX预留的物理低切空腔，保证音波通透明朗撞向Limiter。
+                           }).connect(window.hmkMasterLimiter);
+                           // PolySynth 释放更大资源容量应对史诗级曲谱的疯狂落雷和扫弦不断层。
+                           sysActiveSynths[tr.id || tr.name].maxPolyphony = 32; 
+                       }
+                   }
+                   return sysActiveSynths[tr.id || tr.name];
+                }
+
+                // 重清理调度并关闭长延残响
+                function cleanupEngines() {
+                    if(isPlaying) {
+                        window.Tone.Transport.stop(); window.Tone.Transport.cancel(0); cancelAnimationFrame(loopAnim);
+                        isPlaying = false; btnPlay.innerText = 'PLAY'; btnPlay.classList.remove('active');
+                        playhead.style.display = 'none';
+                    }
+                    for (const key in sysActiveSynths) { sysActiveSynths[key].releaseAll(); }
+                    canvasCon.querySelectorAll('.hmk-midi-note').forEach(el => el.remove());
+                    cachedNoteObjects = [];
+                }
+
+                let cachedNoteObjects = []; 
+                let currentMode = 'SOLO'; 
+                
+                // ✨ 构建DOM、标定格律红线
+                function renderVisualMap(mode, singleTargetTr = null) {
+                    cleanupEngines();
+                    let tgtArr = mode === 'SOLO' && singleTargetTr ? [singleTargetTr] : validTracks;
+                    let maxW = measureWidthPx;
+                    
+                    tgtArr.forEach(track => {
+                        track.notes.forEach(note => {
+                            let rIdx = noteNames.indexOf(note.name);
+                            if (rIdx === -1) return;
+                            
+                            let topPos = rIdx * 26; 
+                            let leftPos = note.ticks * tickToPx; 
+                            let wSize = note.durationTicks * tickToPx;
+                            
+                            const nb = document.createElement('div'); nb.className = 'hmk-midi-note';
+                            // MIX下采用彩糖碎片阵掩盖轨线杂乱感
+                            if (mode === 'MIX') { nb.style.background = `rgba(${120 + Math.random()*80}, ${120 + Math.random()*80}, ${150 + Math.random()*60}, 0.8)`; nb.style.border='none'; }
+                            nb.style.top = topPos + 'px'; nb.style.left = leftPos + 'px'; nb.style.width = Math.max(3, wSize) + 'px';
+                            canvasCon.appendChild(nb);
+                            
+                            cachedNoteObjects.push({ dom: nb, name: note.name, tBase: note.ticks, dBase: note.durationTicks, trBinder: track });
+                            if (leftPos + wSize + 150 > maxW) maxW = leftPos + wSize + 150;
+                        });
+                    });
+                    
+                    // 倍乘格规法填充，天衣无缝黑暗切换色度网
+                    maxW = Math.ceil(maxW / measureWidthPx) * measureWidthPx;
+                    canvasCon.style.width = maxW + 'px';
+                    
+                    let totalMeasures = Math.ceil(maxW / measureWidthPx);
+                    ruler.innerHTML = ''; ruler.style.width = maxW + 'px';
+                    for(let i = 1; i <= totalMeasures; i++) { 
+                        let sc = document.createElement('span'); sc.innerText = i; sc.style.width = measureWidthPx + 'px'; 
+                        ruler.appendChild(sc); 
+                    }
+
+                    canvasCon.style.backgroundImage = `
+                      repeating-linear-gradient(to right, transparent, transparent ${pxPerBeat - 1}px, var(--hmk-midi-grid-line) ${pxPerBeat - 1}px, var(--hmk-midi-grid-line) ${pxPerBeat}px),
+                      repeating-linear-gradient(to right, transparent, transparent ${measureWidthPx}px, var(--hmk-midi-grid-alt) ${measureWidthPx}px, var(--hmk-midi-grid-alt) ${measureWidthPx * 2}px),
+                      repeating-linear-gradient(to bottom, transparent, transparent 25px, var(--hmk-midi-grid-line) 25px, var(--hmk-midi-grid-line) 26px)
+                    `;
+                    canvasCon.style.backgroundSize = `auto, auto, auto`;
+
+                    // 超智慧：自寻发声源，计算这幅百键巨型画板中真正的火力密集地带，并卷过滑轮视界居中！避免上万次切歌后的傻盯黑屏现象
+                    if(cachedNoteObjects.length > 0) {
+                        let topCacheSum = 0;
+                        cachedNoteObjects.forEach(b => topCacheSum += parseFloat(b.dom.style.top));
+                        let meanCenterY = topCacheSum / cachedNoteObjects.length;
+                        // 中心上飘 130，以使得该中心轴被完美承接在这 312高 度的小小视野核心
+                        setTimeout(() => { gridWrap.scrollTop = Math.max(0, meanCenterY - 130); }, 50);
+                    }
+                }
+
+                tracksWrap.innerHTML = '';
+                validTracks.forEach((tr, i) => {
+                    let labelName = tr.name || (tr.instrument ? tr.instrument.name : `Track ${i+1}`);
+                    if(!labelName || labelName.trim()==="") labelName = `Track ${i+1}`;
+                    let tkb = document.createElement('button');
+                    tkb.className = 'hmk-midi-btn'; tkb.innerText = labelName; tkb.title = labelName; 
+                    
+                    tkb.onclick = () => { 
+                        currentMode = 'SOLO';
+                        btnMode.className = 'hmk-mode-btn'; btnMode.innerText = 'MODE: SOLO';
+                        Array.from(tracksWrap.children).forEach(btn => btn.classList.remove('active')); 
+                        tkb.classList.add('active'); 
+                        renderVisualMap('SOLO', tr); 
+                    };
+                    tracksWrap.appendChild(tkb);
+                });
+
+                // 黑客化切换合鸣阵
+                btnMode.onclick = () => {
+                    if (currentMode === 'SOLO') {
+                        currentMode = 'MIX';
+                        btnMode.className = 'hmk-mode-btn mode-mix'; btnMode.innerText = 'MODE: MIX ALL';
+                        Array.from(tracksWrap.children).forEach(btn => btn.classList.add('active')); 
+                        renderVisualMap('MIX', null);
+                    } else {
+                        currentMode = 'SOLO';
+                        btnMode.className = 'hmk-mode-btn'; btnMode.innerText = 'MODE: SOLO';
+                        if (tracksWrap.children.length > 0) tracksWrap.children[0].click(); // 打碎并回归初选模式轨1
+                    }
+                };
+
+                // 左盘真键盘交互测点试音阵(随便借借第一组的主战器去响即可)
+                let testKeyMachine = new window.Tone.PolySynth(window.Tone.Synth, { oscillator: { type: "amtriangle" }, volume:-8 }).connect(window.hmkMasterLimiter);
+                Array.from(keysInner.children).forEach((kd, idx) => {
+                   let noteStr = noteNames[idx];
+                   const triggerDown = (e) => {
+                       if(testKeyMachine.loaded !== false) testKeyMachine.triggerAttack(noteStr);
+                       e.currentTarget.classList.add('pressed');
+                   };
+                   const triggerUp = (e) => {
+                       if(testKeyMachine.loaded !== false) testKeyMachine.triggerRelease(noteStr);
+                       e.currentTarget.classList.remove('pressed');
+                   };
+                   kd.addEventListener('mousedown', triggerDown);
+                   kd.addEventListener('touchstart', (e)=>{ e.preventDefault(); triggerDown(e); }, {passive: false});
+                   kd.addEventListener('mouseup', triggerUp); kd.addEventListener('mouseleave', triggerUp);
+                   kd.addEventListener('touchend', triggerUp); kd.addEventListener('touchcancel', triggerUp);
+                });
+
+                bpmSlider.oninput = (e) => { if(window.Tone && window.Tone.Transport) window.Tone.Transport.bpm.value = Number(e.target.value); };
+
+                if(tracksWrap.children.length > 0) tracksWrap.children[0].click();
+                
+                btnPlay.disabled = false; btnPlay.innerText = 'PLAYING?';
+                
+                btnPlay.onclick = async () => {
+                    if (cachedNoteObjects.length === 0) return;
+                    await window.Tone.start();
+
+                    if(isPlaying) {
+                        cleanupEngines();
+                        if(currentMode==='SOLO') {
+                           let actBtn = Array.from(tracksWrap.children).find(b=>b.classList.contains('active'));
+                           if(actBtn) actBtn.click(); else tracksWrap.children[0].click();
+                        } else renderVisualMap('MIX');
+
+                    } else {
+                        window.Tone.Transport.stop(); window.Tone.Transport.cancel(0); 
+                        window.Tone.Transport.bpm.value = Number(bpmSlider.value);
+                        playhead.style.display = 'block'; playhead.style.transform = 'translateX(0px)';
+                        
+                        cachedNoteObjects.forEach(n => {
+                            const beatsInSec = 60 / window.Tone.Transport.bpm.value;
+                            const rStart = (n.tBase / bTicks) * beatsInSec; 
+                            const rDur = (n.dBase / bTicks) * beatsInSec;
+                            // 这里是最神奇的点：按照存入时的挂轨名获取独立发声盒保证分离
+                            let tSynth = getSynthByTrack(n.trBinder);
+                            
+                            window.Tone.Transport.schedule((time) => {
+                                tSynth.triggerAttackRelease(n.name, rDur, time);
+                                window.Tone.Draw.schedule(() => {
+                                    if(n.dom) {
+                                      n.dom.classList.add('playing');
+                                      setTimeout(() => { if(n.dom) n.dom.classList.remove('playing'); }, rDur * 1000);
+                                    }
+                                }, time);
+                            }, rStart);
+                        });
+                        
+                        window.Tone.Transport.start("+0.1"); isPlaying = true;
+                        btnPlay.innerText = 'STOP OR MIX REWIND'; btnPlay.classList.add('active');
+                        
+                        const scrollerGrid = gridWrap;
+                        const moveHead = () => {
+                            if(!isPlaying) return;
+                            let curSec = window.Tone.Transport.seconds; 
+                            let bSec = 60 / window.Tone.Transport.bpm.value;
+                            let headLeftPx = (curSec / bSec) * pxPerBeat; 
+                            playhead.style.transform = `translateX(${headLeftPx}px)`;
+                            
+                            // X推流前进拉锯战锁定，防止手动卷轮错乱遮眼
+                            if (headLeftPx > scrollerGrid.clientWidth / 2.5) { scrollerGrid.scrollLeft = headLeftPx - scrollerGrid.clientWidth / 2.5; }
+                            else { scrollerGrid.scrollLeft = 0; }
+                            
+                            loopAnim = requestAnimationFrame(moveHead);
+                        };
+                        moveHead();
+                    }
+                };
+
+            }).catch(e => { btnPlay.innerText = 'RESTRICT'; console.log("流获取截停：", e); });
+        };
+
+        if (window.Tone && window.Midi) { startBinding(); return; }
+        
+        if (!window.hmkToneFetching) {
+            window.hmkToneFetching = true;
+            const s1 = document.createElement('script');
+            s1.src = 'https://cdn.jsdelivr.net/npm/tone@14.7.77/build/Tone.min.js';
+            s1.crossOrigin = "anonymous"; 
+            s1.onerror = () => { btnPlay.innerText = "NO CDN"; }
+            document.body.appendChild(s1);
+            s1.onload = () => {
+                const s2 = document.createElement('script');
+                s2.src = 'https://cdn.jsdelivr.net/npm/@tonejs/midi@2.0.28/build/Midi.min.js';
+                s2.crossOrigin = "anonymous"; 
+                s2.onerror = () => { btnPlay.innerText = "NO CDN"; }
+                document.body.appendChild(s2);
+                s2.onload = () => {
+                    const ev = new CustomEvent("HmkAudioReady"); document.dispatchEvent(ev); startBinding();
+                };
+            };
+        } else {
+            document.addEventListener("HmkAudioReady", () => { startBinding(); });
         }
     }
 
@@ -868,12 +1272,9 @@
         initBannerAndText(); initCenterSearchBar(); remodelPosts(); relocatePostTitleMeta(); initObsidianGraph(); 
         
         parseWikiSyntax(); 
+        initMidiPlayerUI(); 
         
-        /* 🗡️ 时间裂隙破甲防守！扫描三次杜绝复生漏网之鱼！ */
-        buildCodeHighlight();
-        setTimeout(buildCodeHighlight, 300);
-        setTimeout(buildCodeHighlight, 800);
-        
+        buildCodeHighlight(); setTimeout(buildCodeHighlight, 300); setTimeout(buildCodeHighlight, 800);
         Promise.race([ document.fonts ? document.fonts.ready : Promise.resolve(), new Promise(res => setTimeout(res, 800)) ]).then(() => { requestAnimationFrame(() => { document.documentElement.classList.add('hmk-ready'); }); });
     }
 
