@@ -853,15 +853,16 @@
         }
     }
 
-    /* --- 🔮 完整的UI骨架系统：容纳轨、调参滑块和视距限定框 --- */
+    /* --- 🔮 完整的UI骨架系统：全升号覆盖、全八度囊括防吞轨界 --- */
     function initMidiPlayerUI() {
         const mounts = document.querySelectorAll('.hmk-midi-mount');
         if (mounts.length === 0) return;
         
-        /* 精确列布75键完整琴区。涵盖常见和声最低/最高界限。 */
-        const octBase = ["B","Bb","A","Ab","G","Gb","F","E","Eb","D","Db","C"];
-        const noteNames = ["C8"];
-        for (let oct = 7; oct >= 2; oct--) { octBase.forEach(n => noteNames.push(n + oct)); }
+        /* 🎹 破限修正：全线使用标准 Midi 底层大系[升号体系(#)]!
+           将键盘区上下彻底拉爆贯穿，108全琴键满功率排列，捕抓截获从最底层轰鸣(0层)到宇宙极空音(9层)不漏放！ */
+        const octBase = ["B", "A#", "A", "G#", "G", "F#", "F", "E", "D#", "D", "C#", "C"];
+        const noteNames = ["C9"];
+        for (let oct = 8; oct >= 0; oct--) { octBase.forEach(n => noteNames.push(n + oct)); }
         
         mounts.forEach(mount => {
             if (mount.hasAttribute('data-ui-built')) return;
@@ -870,7 +871,6 @@
 
             const appBox = document.createElement('div'); appBox.className = 'hmk-midi-app';
             
-            // ======【模式选择 & 动态多轨水平铺设列】======
             const topBar = document.createElement('div'); topBar.className = 'hmk-midi-topbar';
             const btnMode = document.createElement('button'); btnMode.className = 'hmk-mode-btn'; btnMode.innerText = 'MODE: SOLO';
             const tracksWrap = document.createElement('div'); tracksWrap.className = 'hmk-midi-tracks-wrapper';
@@ -878,7 +878,6 @@
             tracksWrap.appendChild(btnHold);
             topBar.appendChild(btnMode); topBar.appendChild(tracksWrap);
             
-            // ======【参数滑块总控】======
             const topHeader = document.createElement('div'); topHeader.className = 'hmk-midi-header';
             const headerL = document.createElement('div'); headerL.className = 'hmk-midi-h-left';
             
@@ -897,14 +896,14 @@
             headerR.appendChild(ruler);
             topHeader.appendChild(headerL); topHeader.appendChild(headerR);
             
-            // ======【音区视口裁切 & 渲染画布群】======
             const AgentScroll = document.createElement('div'); AgentScroll.className = 'hmk-midi-scroll-agent';
             
             const keysBox = document.createElement('div'); keysBox.className = 'hmk-midi-b-keys';
             const keysInner = document.createElement('div'); keysInner.className = 'hmk-keys-inner';
             noteNames.forEach(n => { 
                 const keyDiv = document.createElement('div'); 
-                keyDiv.className = n.includes('b') ? 'hmk-key-item hmk-key-b' : 'hmk-key-item hmk-key-w'; 
+                // 琴身识别机制同步修正：认作 `#` 构建赛博黑键
+                keyDiv.className = n.includes('#') ? 'hmk-key-item hmk-key-b' : 'hmk-key-item hmk-key-w'; 
                 keyDiv.innerText = n; 
                 keysInner.appendChild(keyDiv); 
             });
@@ -924,18 +923,16 @@
             appBox.appendChild(topBar); appBox.appendChild(topHeader); appBox.appendChild(AgentScroll);
             mount.appendChild(appBox);
             
-            // 同向联合滑动，Y位对琴轴无错差，X轨随进度同退！
             gridWrap.addEventListener('scroll', () => { 
                 headerR.scrollLeft = gridWrap.scrollLeft; 
                 keysBox.scrollTop = gridWrap.scrollTop;
             });
 
-            // 开始抓包真正的混音计算
             loadSynthesizerAndBind(midiUrl, tracksWrap, btnMode, volBox, bpmBox, btnPlay, ruler, canvasCon, playhead, keysInner, noteNames, gridWrap);
         });
     }
 
-    // == 高能音频计算/增益总线/防暴节点与图阵重列合辑 ==
+    // == 绝稳计算内核阵及复音极载化加强版 ==
     function loadSynthesizerAndBind(midiUrl, tracksWrap, btnMode, volB, bpmB, btnPlay, ruler, canvasCon, playhead, keysInner, noteNames, gridWrap) {
         const bpmVal = bpmB.querySelector('.h-bpm-v');
         const bpmSlider = bpmB.querySelector('.h-bpm-s');
@@ -960,7 +957,6 @@
                     tsDen = midiObj.header.timeSignatures[0].timeSignature[1];
                 }
                 
-                // 我们把时间具像化，以一拍占用40像素计，算出整小节尺寸用来打底层格
                 const pxPerBeat = 40; 
                 const tickToPx = pxPerBeat / bTicks; 
                 const measureWidthPx = tsNum * (4 / tsDen) * pxPerBeat; 
@@ -971,25 +967,19 @@
                 let isPlaying = false; 
                 let loopAnim = null;
                 
-                // == 全局压限与总增益大本营！Tone.Limiter => Destination == 
                 if(!window.hmkMasterBusBuilt) {
                     window.hmkMasterBusBuilt = true;
-                    // 终极音量放大节点，负责暴戾增效
                     window.hmkMasterVolume = new window.Tone.Volume(4).toDestination();
-                    // 音量天花板压榨器！无论多炸哪怕破0分贝，在这里被按住柔性挤压输出到Volume发声。彻底避免撕裂噼啪声。
                     window.hmkMasterLimiter = new window.Tone.Limiter(-0.5).connect(window.hmkMasterVolume);
                 }
 
-                // 连接 UI 和实际系统级增益器
                 volSlider.disabled = false;
                 volSlider.oninput = (e) => {
                    if(window.hmkMasterVolume) window.hmkMasterVolume.volume.value = Number(e.target.value);
                 }
-                // 上膛当前滑动位置同步至物理音箱
                 window.hmkMasterVolume.volume.value = Number(volSlider.value);
                 
                 let sysActiveSynths = {};
-                // 复用或者创建全新专属轨琴机。赋予更高阶的电子声波让声音雄厚而空灵。
                 function getSynthByTrack(tr) {
                    if (!sysActiveSynths[tr.id || tr.name]) {
                        let isDrum = tr.instrument.percussion || (tr.name || "").toLowerCase().includes("drum");
@@ -999,20 +989,18 @@
                                envelope: { attack: 0.005, decay: 0.2, sustain: 0, release: 0.2 } 
                            }).connect(window.hmkMasterLimiter);
                        } else {
-                           // 【超高解析振荡阵法】：替换廉价sine，使用带模拟味的正弦波调制宽三角。保留广阔包络释放时长(release)。
                            sysActiveSynths[tr.id || tr.name] = new window.Tone.PolySynth(window.Tone.Synth, { 
                                oscillator: { type: "amtriangle", harmonicity: 0.5, modulationType: "sine" },
                                envelope: { attack: 0.015, decay: 0.3, sustain: 0.3, release: 1.5 },
-                               volume: -10  // 给10和弦或者8首MIX预留的物理低切空腔，保证音波通透明朗撞向Limiter。
+                               volume: -10
                            }).connect(window.hmkMasterLimiter);
-                           // PolySynth 释放更大资源容量应对史诗级曲谱的疯狂落雷和扫弦不断层。
-                           sysActiveSynths[tr.id || tr.name].maxPolyphony = 32; 
+                           // 🎹 防卡弹超强火力限制突破：复音容承数从 32 直接翻倍至极境的 64！接下 Vocaloid 千军和弦不卡切 🎹 
+                           sysActiveSynths[tr.id || tr.name].maxPolyphony = 64; 
                        }
                    }
                    return sysActiveSynths[tr.id || tr.name];
                 }
 
-                // 重清理调度并关闭长延残响
                 function cleanupEngines() {
                     if(isPlaying) {
                         window.Tone.Transport.stop(); window.Tone.Transport.cancel(0); cancelAnimationFrame(loopAnim);
@@ -1027,7 +1015,6 @@
                 let cachedNoteObjects = []; 
                 let currentMode = 'SOLO'; 
                 
-                // ✨ 构建DOM、标定格律红线
                 function renderVisualMap(mode, singleTargetTr = null) {
                     cleanupEngines();
                     let tgtArr = mode === 'SOLO' && singleTargetTr ? [singleTargetTr] : validTracks;
@@ -1035,6 +1022,7 @@
                     
                     tgtArr.forEach(track => {
                         track.notes.forEach(note => {
+                            // 全境域音色定位雷达（防超域越轨消失的核心修正生效部）
                             let rIdx = noteNames.indexOf(note.name);
                             if (rIdx === -1) return;
                             
@@ -1043,7 +1031,6 @@
                             let wSize = note.durationTicks * tickToPx;
                             
                             const nb = document.createElement('div'); nb.className = 'hmk-midi-note';
-                            // MIX下采用彩糖碎片阵掩盖轨线杂乱感
                             if (mode === 'MIX') { nb.style.background = `rgba(${120 + Math.random()*80}, ${120 + Math.random()*80}, ${150 + Math.random()*60}, 0.8)`; nb.style.border='none'; }
                             nb.style.top = topPos + 'px'; nb.style.left = leftPos + 'px'; nb.style.width = Math.max(3, wSize) + 'px';
                             canvasCon.appendChild(nb);
@@ -1053,7 +1040,6 @@
                         });
                     });
                     
-                    // 倍乘格规法填充，天衣无缝黑暗切换色度网
                     maxW = Math.ceil(maxW / measureWidthPx) * measureWidthPx;
                     canvasCon.style.width = maxW + 'px';
                     
@@ -1071,12 +1057,10 @@
                     `;
                     canvasCon.style.backgroundSize = `auto, auto, auto`;
 
-                    // 超智慧：自寻发声源，计算这幅百键巨型画板中真正的火力密集地带，并卷过滑轮视界居中！避免上万次切歌后的傻盯黑屏现象
                     if(cachedNoteObjects.length > 0) {
                         let topCacheSum = 0;
                         cachedNoteObjects.forEach(b => topCacheSum += parseFloat(b.dom.style.top));
                         let meanCenterY = topCacheSum / cachedNoteObjects.length;
-                        // 中心上飘 130，以使得该中心轴被完美承接在这 312高 度的小小视野核心
                         setTimeout(() => { gridWrap.scrollTop = Math.max(0, meanCenterY - 130); }, 50);
                     }
                 }
@@ -1098,7 +1082,6 @@
                     tracksWrap.appendChild(tkb);
                 });
 
-                // 黑客化切换合鸣阵
                 btnMode.onclick = () => {
                     if (currentMode === 'SOLO') {
                         currentMode = 'MIX';
@@ -1108,11 +1091,10 @@
                     } else {
                         currentMode = 'SOLO';
                         btnMode.className = 'hmk-mode-btn'; btnMode.innerText = 'MODE: SOLO';
-                        if (tracksWrap.children.length > 0) tracksWrap.children[0].click(); // 打碎并回归初选模式轨1
+                        if (tracksWrap.children.length > 0) tracksWrap.children[0].click(); 
                     }
                 };
 
-                // 左盘真键盘交互测点试音阵(随便借借第一组的主战器去响即可)
                 let testKeyMachine = new window.Tone.PolySynth(window.Tone.Synth, { oscillator: { type: "amtriangle" }, volume:-8 }).connect(window.hmkMasterLimiter);
                 Array.from(keysInner.children).forEach((kd, idx) => {
                    let noteStr = noteNames[idx];
@@ -1156,7 +1138,6 @@
                             const beatsInSec = 60 / window.Tone.Transport.bpm.value;
                             const rStart = (n.tBase / bTicks) * beatsInSec; 
                             const rDur = (n.dBase / bTicks) * beatsInSec;
-                            // 这里是最神奇的点：按照存入时的挂轨名获取独立发声盒保证分离
                             let tSynth = getSynthByTrack(n.trBinder);
                             
                             window.Tone.Transport.schedule((time) => {
@@ -1181,7 +1162,6 @@
                             let headLeftPx = (curSec / bSec) * pxPerBeat; 
                             playhead.style.transform = `translateX(${headLeftPx}px)`;
                             
-                            // X推流前进拉锯战锁定，防止手动卷轮错乱遮眼
                             if (headLeftPx > scrollerGrid.clientWidth / 2.5) { scrollerGrid.scrollLeft = headLeftPx - scrollerGrid.clientWidth / 2.5; }
                             else { scrollerGrid.scrollLeft = 0; }
                             
@@ -1201,13 +1181,13 @@
             const s1 = document.createElement('script');
             s1.src = 'https://cdn.jsdelivr.net/npm/tone@14.7.77/build/Tone.min.js';
             s1.crossOrigin = "anonymous"; 
-            s1.onerror = () => { btnPlay.innerText = "NO CDN"; }
+            s1.onerror = () => { btnPlay.innerText = "NO CDN_1"; }
             document.body.appendChild(s1);
             s1.onload = () => {
                 const s2 = document.createElement('script');
                 s2.src = 'https://cdn.jsdelivr.net/npm/@tonejs/midi@2.0.28/build/Midi.min.js';
                 s2.crossOrigin = "anonymous"; 
-                s2.onerror = () => { btnPlay.innerText = "NO CDN"; }
+                s2.onerror = () => { btnPlay.innerText = "NO CDN_2"; }
                 document.body.appendChild(s2);
                 s2.onload = () => {
                     const ev = new CustomEvent("HmkAudioReady"); document.dispatchEvent(ev); startBinding();
